@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, TextInput } from 'react-native';
 import Constants from 'expo-constants';
 
 const statusBarHeight = Constants.statusBarHeight;
@@ -32,6 +32,7 @@ export const InnerContainer = styled.View`
 export const AppLogo = styled.Image`
     width: 250px;
     height: 250px;
+    border-radius: 125px;
 `
 export const PageTitle = styled.Text`
     font-size: 24px;
@@ -49,4 +50,76 @@ export const SubHeading = styled.Text`
 `
 export const FormArea = styled.View`
     width: 90%;
+`
+export const StyledTextInput = styled.TextInput`
+    background-color: ${platinum};
+    padding: 15px;
+    padding-left: 55px;
+    padding-right: 55px;
+    border-radius: 5px;
+    font-size: 16px;
+    height: 60px;
+    margin-vertical: 3px;
+    margin-bottom: 10px;
+    color: ${jet};
+`
+export const StyledInputLabel = styled.Text`
+    color: ${white};
+    font-size: 13px;
+    text-align: left;
+`
+export const LeftIcon = styled.View`
+    position: absolute;
+    top: 35px;
+    left: 15px;
+    z-index: 1;
+`
+export const RightIcon = styled.TouchableOpacity`
+    position: absolute;
+    top: 35px;
+    right: 15px;
+    z-index: 1;
+`
+export const StyledButton = styled.TouchableOpacity`
+    padding: 15px;
+    background-color: ${yellow};
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-vertical: 5px;
+    height: 60px;
+`
+export const ButtonText = styled.Text`
+    color: ${green};
+    font-size: 16px;
+`
+export const MsgBox = styled.Text`
+    text-align: center;
+    font-size: 13px;
+`
+export const Line = styled.View`
+    height: 1px;
+    width: 100%;
+    background-color: ${platinum};
+    margin-vertical: 10px;
+`
+export const ExtraView =  styled.View`
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+`
+export const ExtraText = styled.Text`
+    justify-content: center;
+    align-items: center;
+    color: ${white};
+    font-size: 15px;
+`
+export const TextLink = styled.TouchableOpacity`
+    justify-content: center;
+    align-items: center;
+`
+export const TextLinkContent = styled.Text`
+    color: ${yellow};
+    font-size: 15px;
 `
