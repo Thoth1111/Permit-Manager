@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { view, Image, Text } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import Constants from 'expo-constants';
 
 const statusBarHeight = Constants.statusBarHeight;
@@ -39,4 +39,14 @@ export const PageTitle = styled.Text`
     font-weight: semibold;
     color: ${white};
     padding: 10px;
+`
+export const SubHeading = styled.Text`
+    font-size: 18px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: ${yellow};
+`
+export const FormArea = styled.View`
+    width: 90%;
 `
