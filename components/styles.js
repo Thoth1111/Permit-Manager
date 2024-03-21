@@ -52,7 +52,7 @@ export const FormArea = styled.View`
     width: 90%;
 `
 export const StyledTextInput = styled.TextInput`
-    background-color: ${platinum};
+    background-color: ${white};
     padding: 15px;
     padding-left: 55px;
     padding-right: 55px;
@@ -70,13 +70,13 @@ export const StyledInputLabel = styled.Text`
 `
 export const LeftIcon = styled.View`
     position: absolute;
-    top: 35px;
+    top: 40px;
     left: 15px;
     z-index: 1;
 `
 export const RightIcon = styled.TouchableOpacity`
     position: absolute;
-    top: 35px;
+    top: 40px;
     right: 15px;
     z-index: 1;
 `
@@ -92,6 +92,7 @@ export const StyledButton = styled.TouchableOpacity`
 export const ButtonText = styled.Text`
     color: ${green};
     font-size: 16px;
+    font-weight: bold;
 `
 export const MsgBox = styled.Text`
     text-align: center;
@@ -118,6 +119,7 @@ export const ExtraText = styled.Text`
 export const TextLink = styled.TouchableOpacity`
     justify-content: center;
     align-items: center;
+    margin-left: 5px;
 `
 export const TextLinkContent = styled.Text`
     color: ${yellow};
