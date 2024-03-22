@@ -5,9 +5,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
-import Login from '../screens/login';
-import SignUp from '../screens/signup';
+import Login from '../screens/Login';
+import SignUp from '../screens/Signup';
 import Home from '../screens/Home';
+import Licenses from '../screens/Licenses';
+import Payments from '../screens/Payments';
+import Account from '../screens/Account';
 
 import { Colors } from '../components/styles';
 
@@ -24,13 +27,16 @@ const RootStack = () => {
                 },
                 headerTitle: '',
                 headerTransparent: true,
-                headerTintColor: white,
+                headerTintColor: green,
             }}
             initialRouteName='Login'
         >
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="SignUp" component={SignUp} />
-            <Stack.Screen options={{headerTintColor: green}} name="Home" component={Home} />
+            <Stack.Screen options={{headerTintColor: white}} name="Login" component={Login} />
+            <Stack.Screen options={{headerTintColor: white}} name="SignUp" component={SignUp} />
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Licenses" component={Licenses} />
+            <Stack.Screen name="Payments" component={Payments} />
+            <Stack.Screen name="Account" component={Account} />
         </Stack.Navigator>
     </NavigationContainer>
   )
