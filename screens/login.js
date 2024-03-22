@@ -6,7 +6,7 @@ import MyTextInput from '../components/MyTextInput.js';
 import {
     Container, InnerContainer, AppLogo, PageTitle, SubHeading, FormArea, StyledButton, ButtonText, Colors, MsgBox,
     Line, ExtraView, ExtraText, TextLink, TextLinkContent
-} from '../components/styles';
+} from '../components/styles.js';
 
 // Keyboard Averse Wrapper
 import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper.js';
