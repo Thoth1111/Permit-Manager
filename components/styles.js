@@ -150,7 +150,7 @@ export const CardTitle = styled.Text`
     font-weight: bold;
     color: ${jet};
 `
-export const LicenseDatesView = styled.View`
+export const LicenseListsView = styled.View`
     flex: 3;
     width: 100%;
     padding: 8px;
