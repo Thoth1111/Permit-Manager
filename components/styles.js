@@ -21,13 +21,14 @@ const { jet, caribbean, white, platinum, indigo, green, yellow } = Colors;
 export const Container = styled.View`
     flex: 1;
     padding: 20px;
-    background-color: ${green};
-    padding-top: ${statusBarHeight + 10}px;
+    background-color: ${ props => props.color ? props.color : white };
+    padding-top: ${statusBarHeight + 30}px;
 `
 export const InnerContainer = styled.View`
     flex: 1;
     width: 100%;
     align-items: center;
+    background-color: ${ props => props.color ? props.color : white };
 `
 export const AppLogo = styled.Image`
     width: 250px;
@@ -38,7 +39,7 @@ export const PageTitle = styled.Text`
     font-size: 24px;
     text-align: center;
     font-weight: semibold;
-    color: ${white};
+    color: ${ props => props.color ? props.color : white };
     padding: 10px;
 `
 export const SubHeading = styled.Text`
@@ -46,7 +47,7 @@ export const SubHeading = styled.Text`
     margin-bottom: 20px;
     letter-spacing: 1px;
     font-weight: bold;
-    color: ${yellow};
+    color: ${ props => props.color ? props.color : yellow };
 `
 export const FormArea = styled.View`
     width: 90%;
@@ -124,4 +125,36 @@ export const TextLink = styled.TouchableOpacity`
 export const TextLinkContent = styled.Text`
     color: ${yellow};
     font-size: 15px;
+`
+export const CardContainer = styled.View`
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+`
+export const CardView = styled.TouchableOpacity`
+    background-color: ${yellow};
+    border: ${platinum};
+    align-items: center;
+    justify-content: center;
+    width: 95px;
+    height: 95px;
+    margin: 8px;
+    padding: 10px;
+    border-radius: 20px;
+`
+export const CardTitle = styled.Text`
+    font-size: 14px;
+    font-weight: bold;
+    color: ${jet};
+`
+export const LicenseDatesView = styled.View`
+    flex: 3;
+    width: 100%;
+    padding: 8px;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 10px;
 `
