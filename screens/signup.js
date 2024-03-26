@@ -21,6 +21,33 @@ const SignUp = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true)
     const [loading, setLoading] = useState(false)
 
+    const handleSignUp = (values) => {
+        setLoading(true)
+        if (values.email === '' || values.national_id_number === '' || values.phone_number === '' || values.password === '' || values.confirm_password === '') {
+            alert('Please fill in all the required fields')
+            setLoading(false)
+            return
+        } else if (values.password !== values.confirm_password) {
+            alert('Passwords do not match')
+            setLoading(false)
+            return
+        } else if (values.national_id_number.length < 8 || values.password.length < 8) {
+            console.log('National Id Number and Password must be at least 8 characters long')
+            setLoading(false)
+            // return
+        }
+        // try {
+        //     const { data } = await axios.post(`${App_url}/register`, values);
+        //     console.log("Signed In: ", data);
+        //     navigation.navigate('Home');
+        // } catch (err) {
+        //     console.log(err);
+        // }
+        setLoading(false)
+        console.log(values);
+        navigation.navigate('Home')
+    }
+
     return (
         <KeyboardAverseWrapper>
             <Container color={green}>
