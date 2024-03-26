@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
+import Splash from '../screens/Splash';
 import Login from '../screens/Login';
 import SignUp from '../screens/Signup';
 import Home from '../screens/Home';
@@ -29,8 +30,9 @@ const RootStack = () => {
                 headerTransparent: true,
                 headerTintColor: green,
             }}
-            initialRouteName='Login'
-        >
+            initialRouteName='Splash'
+        >   
+            <Stack.Screen name="Splash" component={Splash} />
             <Stack.Screen options={{headerTintColor: white}} name="Login" component={Login} />
             <Stack.Screen options={{headerTintColor: white}} name="SignUp" component={SignUp} />
             <Stack.Screen name="Home" component={Home} />
