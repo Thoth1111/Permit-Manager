@@ -19,6 +19,7 @@ import { Formik } from 'formik';
 
 const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     return (
         <KeyboardAverseWrapper>
@@ -30,8 +31,21 @@ const Login = ({ navigation }) => {
                     <Formik
                         initialValues={{ national_id_number: '', password: '' }}
                         onSubmit={(values) => {
+                            setLoading(true)
+                            if (values.national_id_number === '' || values.password === '') {
+                                alert('Please fill in all the required fields')
+                                setLoading(false)
+                                return
+                            } else if (values.national_id_number.length < 8 || values.password.length < 8) {
+                                console.log('National Id Number and Password must be at least 8 characters long')
+                                setLoading(false)
+                                // return
+                            } else {
+                                console.log('Submitting...')
+                                setLoading(false)                               
+                            }
                             console.log(values);
-                            navigation.navigate('Home')
+                            navigation.navigate('Home')                            
                         }}
                     >
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
