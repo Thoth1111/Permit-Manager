@@ -43,7 +43,7 @@ const SignUp = ({ navigation }) => {
                                     onChangeText={handleChange('email')}
                                     onBlur={handleBlur('email')}
                                     value={values.email}
-                                    keyboardType="email"
+                                    keyboardType="email-address"
                                 />
                                 <MyTextInput
                                     label="National Id Number"
@@ -90,16 +90,16 @@ const SignUp = ({ navigation }) => {
                                 <StyledButton onPress={handleSubmit}>
                                     <ButtonText>Register</ButtonText>
                                 </StyledButton>
-                                <Line />
-                                <ExtraView>
-                                    <ExtraText>Already have an account?</ExtraText>
-                                    <TextLink onPress={()=> navigation.navigate('Login')}>
-                                        <TextLinkContent>Sign In</TextLinkContent>
-                                    </TextLink>
-                                </ExtraView>
                             </FormArea>
                         )}
                     </Formik>
+                    <Line />
+                    <ExtraView>
+                        <ExtraText>Already have an account?</ExtraText>
+                        <TextLink onPress={() => navigation.navigate('Login')}>
+                            <TextLinkContent>Sign In</TextLinkContent>
+                        </TextLink>
+                    </ExtraView>
                 </InnerContainer>
             </Container>
         </KeyboardAverseWrapper>
