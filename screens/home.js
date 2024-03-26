@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar'
 import * as Icon from 'react-native-feather';
 
 // Styled components
-import { Container, InnerContainer, ExtraText, CardContainer, CardView, CardTitle, Colors, Line, PageTitle, SubHeading,
+import { Container, InnerContainer, CardContainer, CardView, CardTitle, Colors, Line, PageTitle, SubHeading,
 LicenseListsView
 } from '../components/styles'
 
