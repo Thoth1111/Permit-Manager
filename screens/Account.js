@@ -11,7 +11,7 @@ const Account = ({ navigation }) => {
             <PageTitle color={green}>Account</PageTitle>
             <CardContainer>
                 <Line />
-                <StyledButton style={{ flexDirection: 'row' }}>
+                <StyledButton onPress={() => navigation.navigate('Login')} style={{ flexDirection: 'row' }}>
                     <Icon.LogOut size={50} color={green} />
                     <ButtonText>Log Out</ButtonText>
                 </StyledButton>
