@@ -34,6 +34,7 @@ export const AppLogo = styled.Image`
     width: 250px;
     height: 250px;
     border-radius: 125px;
+    margin-top: 15%;
 `
 export const PageTitle = styled.Text`
     font-size: 24px;
