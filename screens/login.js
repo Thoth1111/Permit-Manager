@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import axios from 'axios';
 
 // Styled Components
 import MyTextInput from '../components/MyTextInput.js';
@@ -21,6 +22,29 @@ const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true)
     const [loading, setLoading] = useState(false)
 
+    const handleLogin = (values) => {
+        setLoading(true)
+        if (values.national_id_number === '' || values.password === '') {
+            alert('Please fill in all the required fields')
+            setLoading(false)
+            return
+        } else if (values.national_id_number.length < 8 || values.password.length < 8) {
+            console.log('National Id Number and Password must be at least 8 characters long')
+            setLoading(false)
+            // return
+        }
+        // try {
+        //     const { data } = await axios.post('URL', values);
+        //     console.log("Signed In: ", data);
+        //     navigation.navigate('Home');
+        // } catch (err) {
+        //     console.log(err);
+        // }
+        setLoading(false)
+        console.log(`submitting ${values}`);
+        navigation.navigate('Home')
+    }
+
     return (
         <KeyboardAverseWrapper>
             <Container color={green}>
@@ -32,20 +56,7 @@ const Login = ({ navigation }) => {
                         initialValues={{ national_id_number: '', password: '' }}
                         onSubmit={(values) => {
                             setLoading(true)
-                            if (values.national_id_number === '' || values.password === '') {
-                                alert('Please fill in all the required fields')
-                                setLoading(false)
-                                return
-                            } else if (values.national_id_number.length < 8 || values.password.length < 8) {
-                                console.log('National Id Number and Password must be at least 8 characters long')
-                                setLoading(false)
-                                // return
-                            } else {
-                                console.log('Submitting...')
-                                setLoading(false)                               
-                            }
-                            console.log(values);
-                            navigation.navigate('Home')                            
+                            handleLogin(values)                   
                         }}
                     >
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
@@ -74,13 +85,18 @@ const Login = ({ navigation }) => {
                                     setHidePassword={setHidePassword}
                                 />
                                 <MsgBox>...</MsgBox>
-                                <StyledButton onPress={handleSubmit} style={{ marginTop: '5%' }}>
+                                <StyledButton onPress={handleSubmit}>
                                     <ButtonText>Login</ButtonText>
                                 </StyledButton>
                             </FormArea>
                         )}
                     </Formik>
-                    <Line style={{ marginTop: '55%' }}/>
+                    <ExtraView style={{ marginTop: '5%', justifyContent: 'start' }}>
+                        <TextLink>
+                            <TextLinkContent>Forgot Password?</TextLinkContent>
+                        </TextLink>
+                    </ExtraView>
+                    <Line style={{ marginTop: '42%' }}/>
                     <ExtraView>
                         <ExtraText>Don't have an account?</ExtraText>
                         <TextLink onPress={() => navigation.navigate('SignUp')}>
