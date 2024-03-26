@@ -19,17 +19,35 @@ const { platinum, green } = Colors;
 
 const SignUp = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     return (
         <KeyboardAverseWrapper>
             <Container color={green}>
                 <StatusBar style="light" />
                 <InnerContainer color={green}>
-                    <PageTitle>COUNTY LICENSE MANAGER</PageTitle>
+                    <PageTitle>BUSINESS LICENSE MANAGER</PageTitle>
                     <SubHeading>Register</SubHeading>
                     <Formik
                         initialValues={{ email: '', national_id_number: '', phone_number: '', password: '', confirm_password: '' }}
                         onSubmit={(values) => {
+                            setLoading(true)
+                            if (values.email === '' || values.national_id_number === '' || values.phone_number === '' || values.password === '' || values.confirm_password === '') {
+                                console.log('Please fill in all the required fields')
+                                setLoading(false)
+                                // return
+                            } else if (values.national_id_number.length < 8 || values.password.length < 8) {
+                                console.log('National Id Number and Password must be at least 8 characters long')
+                                setLoading(false)
+                                // return
+                            } else if (values.password !== values.confirm_password) {
+                                console.log('Passwords do not match')
+                                setLoading(false)
+                                // return
+                            } else {
+                                console.log('Submitting...')
+                                setLoading(false)                               
+                            }
                             console.log(values);
                         }}
                     >
