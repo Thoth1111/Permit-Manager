@@ -24,7 +24,9 @@ const Login = ({ navigation }) => {
     const handleLogin = async (values) => {
         if (validateNationalId(values.national_id_number) && validatePassword(values.password, values.password)) {
             setLoading(true)
-            loginUser(values)
+            console.log(loading);
+            await loginUser(values)
+            setLoading(false)
         }
     }
 
