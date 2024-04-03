@@ -1,5 +1,4 @@
-const axios = require('axios');
-require('dotenv').config();
+import axios from 'axios';
 const URL = process.env.CLM_API_URL;
 
 // Register a user
@@ -36,8 +35,8 @@ const loginUser = async (values) => {
                     //     alert('Error logging in. Check server logs')
                     // }
                 })
-                .catch((error) => {
-                    console.log(error);
+                .catch((err) => {
+                    console.log(err);
                     setLoading(false);
                 });
 }
