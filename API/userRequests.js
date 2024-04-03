@@ -2,13 +2,14 @@ import axios from 'axios';
 const URL = process.env.CLM_API_URL;
 
 // Register a user
-const createAccount = async (values) => {
+const createAccount = async (values, navigateCallback, setLoading) => {
     await axios.post(`${URL}/user/register`, values)
         .then((res) => {
-            console.log(res);
-            if (response.status === 201) {
+            console.log(`${res.status}: ${res.message}`);
+            if (res.status === 201) {
                 // setLoading(false);
-                alert(`Success! ${response.refreshtoken}`)
+                setLoading(false);
+                navigateCallback('Login');                
             //     console.log(response.status);
             //     navigation.navigate('Home');
             // } else {
@@ -25,15 +26,15 @@ const createAccount = async (values) => {
 
 // Login a user
 const loginUser = async (values) => {
-    await axios.post(`${URL}/user/login`, values)
+    await axios.post('https://clm-server.onrender.com/user/login', values)
                 .then((res) => {
                     console.log(res);
-                    if (response.status === 200) {
+                    if (res.status === 200) {
                     //     setLoading(false);
                     //     console.log(response.status);
                     //     navigation.navigate('Home');
                     // } else {
-                        alert(`Success! ${response.refreshtoken}`)
+                        alert(`Success! ${res.refreshtoken}`)
                         // setLoading(false);
                     //     alert('Error logging in. Check server logs')
                     }
