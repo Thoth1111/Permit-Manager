@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import MyTextInput from '../components/MyTextInput.js';
-
-// Formik
+import axios from 'axios';
 import { Formik } from 'formik';
 
 // Styled Components
@@ -11,41 +10,43 @@ import {
     Line, ExtraView, ExtraText, TextLink, TextLinkContent
 } from '../components/styles.js';
 
+// Helpers
+import { validateEmail, validateNationalId, validatePhoneNumber, validatePassword } from '../helpers/validations.js';
+
 // Keyboard Averse Wrapper
 import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper.js';
 
 // Colors
 const { platinum, green } = Colors;
 
+const URL = process.env.CLM_API_URL;
+
 const SignUp = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true)
     const [loading, setLoading] = useState(false)
 
-    const handleSignUp = (values) => {
-        setLoading(true)
-        if (values.email === '' || values.national_id_number === '' || values.phone_number === '' || values.password === '' || values.confirm_password === '') {
-            alert('Please fill in all the required fields')
-            setLoading(false)
-            return
-        } else if (values.password !== values.confirm_password) {
-            alert('Passwords do not match')
-            setLoading(false)
-            return
-        } else if (values.national_id_number.length < 8 || values.password.length < 8) {
-            console.log('National Id Number and Password must be at least 8 characters long')
-            setLoading(false)
-            // return
+    const handleSignUp = async (values) => {
+        if (validateEmail(values.email) && validateNationalId(values.national_id_number) && validatePhoneNumber(values.phone_number) && validatePassword(values.password, values.confirm_password)) {
+            
+            setLoading(true)
+            await axios.post(`${URL}/user/register`, values)
+                .then((response) => {
+                    if (response.status === 201) {
+                        setLoading(false);
+                        console.log(response.status);
+                        navigation.navigate('Home');
+                    } else {
+                        setLoading(false);
+                        alert('Error logging in. Check server logs')
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                    setLoading(false);
+                });
+        } else {
+            console.log('Please fill in all the required fields')
         }
-        // try {
-        //     const { data } = await axios.post(`${App_url}/register`, values);
-        //     console.log("Signed In: ", data);
-        //     navigation.navigate('Home');
-        // } catch (err) {
-        //     console.log(err);
-        // }
-        setLoading(false)
-        console.log(values);
-        navigation.navigate('Home')
     }
 
     return (
@@ -59,23 +60,7 @@ const SignUp = ({ navigation }) => {
                         initialValues={{ email: '', national_id_number: '', phone_number: '', password: '', confirm_password: '' }}
                         onSubmit={(values) => {
                             setLoading(true)
-                            if (values.email === '' || values.national_id_number === '' || values.phone_number === '' || values.password === '' || values.confirm_password === '') {
-                                console.log('Please fill in all the required fields')
-                                setLoading(false)
-                                // return
-                            } else if (values.national_id_number.length < 8 || values.password.length < 8) {
-                                console.log('National Id Number and Password must be at least 8 characters long')
-                                setLoading(false)
-                                // return
-                            } else if (values.password !== values.confirm_password) {
-                                console.log('Passwords do not match')
-                                setLoading(false)
-                                // return
-                            } else {
-                                console.log('Submitting...')
-                                setLoading(false)                               
-                            }
-                            console.log(values);
+                            handleSignUp(values)
                         }}
                     >
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
