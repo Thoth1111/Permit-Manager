@@ -37,3 +37,4 @@ yarn-error.*
 *.uusver
 
 /devDocs.txt
+.env
