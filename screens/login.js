@@ -20,14 +20,14 @@ const { platinum, green } = Colors;
 const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true)
     const [loading, setLoading] = useState(false)
+    const navigateCallback = (screen) => navigation.navigate(screen);
 
     const handleLogin = async (values) => {
         if (validateNationalId(values.national_id_number) && validatePassword(values.password, values.password)) {
             setLoading(true)
-            console.log(loading);
-            await loginUser(values)
-            setLoading(false)
+            await loginUser(values, navigateCallback, setLoading)           
         }
+        setLoading(false)
     }
 
     return (
