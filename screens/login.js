@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import axios from 'axios';
 // Styled Components
 import MyTextInput from '../components/MyTextInput.js';
 import {
@@ -13,8 +12,9 @@ import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper.js';
 import { Formik } from 'formik';
 // Helpers
 import { validateNationalId, validatePassword } from '../helpers/validations.js';
+// API Requests
+import { loginUser } from '../API/userRequests.js';
 
-const URL = process.env.CLM_API_URL;
 const { platinum, green } = Colors;
 
 const Login = ({ navigation }) => {
@@ -24,21 +24,7 @@ const Login = ({ navigation }) => {
     const handleLogin = async (values) => {
         if (validateNationalId(values.national_id_number) && validatePassword(values.password, values.password)) {
             setLoading(true)
-            await axios.post(`${URL}/user/login`, values)
-                .then((response) => {
-                    if (response.status === 200) {
-                        setLoading(false);
-                        console.log(response.status);
-                        navigation.navigate('Home');
-                    } else {
-                        setLoading(false);
-                        alert('Error logging in. Check server logs')
-                    }
-                })
-                .catch((error) => {
-                    console.log(error);
-                    setLoading(false);
-                });
+            loginUser(values)
         }
     }
 
