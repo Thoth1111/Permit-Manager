@@ -7,7 +7,7 @@ const createAccount = async (values) => {
         .then((res) => {
             console.log(res);
             if (response.status === 201) {
-                setLoading(false);
+                // setLoading(false);
                 alert(`Success! ${response.refreshtoken}`)
             //     console.log(response.status);
             //     navigation.navigate('Home');
@@ -19,7 +19,7 @@ const createAccount = async (values) => {
         })
         .catch((err) => {
             console.log(err);
-            setLoading(false);
+            // setLoading(false);
         });
 }
 
@@ -34,14 +34,14 @@ const loginUser = async (values) => {
                     //     navigation.navigate('Home');
                     // } else {
                         alert(`Success! ${response.refreshtoken}`)
-                        setLoading(false);
+                        // setLoading(false);
                     //     alert('Error logging in. Check server logs')
                     }
                     alert(res.status)
                 })
                 .catch((err) => {
                     console.log(err);
-                    setLoading(false);
+                    // setLoading(false);
                 });
 }
 
