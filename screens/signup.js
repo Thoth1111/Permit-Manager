@@ -24,7 +24,9 @@ const SignUp = ({ navigation }) => {
     const handleSignUp = async (values) => {
         if (validateEmail(values.email) && validateNationalId(values.national_id_number) && validatePhoneNumber(values.phone_number) && validatePassword(values.password, values.confirm_password)) {            
             setLoading(true)
-            createAccount(values)
+            console.log(loading);
+            await createAccount(values)
+            setLoading(false)
         } else {
             alert('Please fill in all fields');
         }
