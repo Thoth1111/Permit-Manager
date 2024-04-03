@@ -1,51 +1,32 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import MyTextInput from '../components/MyTextInput.js';
-import axios from 'axios';
 import { Formik } from 'formik';
-
 // Styled Components
 import {
     Container, InnerContainer, PageTitle, SubHeading, FormArea, StyledButton, ButtonText, Colors, MsgBox,
     Line, ExtraView, ExtraText, TextLink, TextLinkContent
 } from '../components/styles.js';
-
 // Helpers
 import { validateEmail, validateNationalId, validatePhoneNumber, validatePassword } from '../helpers/validations.js';
-
 // Keyboard Averse Wrapper
 import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper.js';
+// API Requests
+import { createAccount } from '../API/userRequests.js';
 
 // Colors
 const { platinum, green } = Colors;
-
-const URL = process.env.CLM_API_URL;
 
 const SignUp = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true)
     const [loading, setLoading] = useState(false)
 
     const handleSignUp = async (values) => {
-        if (validateEmail(values.email) && validateNationalId(values.national_id_number) && validatePhoneNumber(values.phone_number) && validatePassword(values.password, values.confirm_password)) {
-            
+        if (validateEmail(values.email) && validateNationalId(values.national_id_number) && validatePhoneNumber(values.phone_number) && validatePassword(values.password, values.confirm_password)) {            
             setLoading(true)
-            await axios.post(`${URL}/user/register`, values)
-                .then((response) => {
-                    if (response.status === 201) {
-                        setLoading(false);
-                        console.log(response.status);
-                        navigation.navigate('Home');
-                    } else {
-                        setLoading(false);
-                        alert('Error logging in. Check server logs')
-                    }
-                })
-                .catch((error) => {
-                    console.log(error);
-                    setLoading(false);
-                });
+            createAccount(values)
         } else {
-            console.log('Please fill in all the required fields')
+            alert('Please fill in all fields');
         }
     }
 
