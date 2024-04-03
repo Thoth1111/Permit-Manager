@@ -14,7 +14,7 @@ import { Formik } from 'formik';
 // Helpers
 import { validateNationalId, validatePassword } from '../helpers/validations.js';
 
-const URL = 'https://clm-server.onrender.com';
+const URL = process.env.CLM_API_URL;
 const { platinum, green } = Colors;
 
 const Login = ({ navigation }) => {
