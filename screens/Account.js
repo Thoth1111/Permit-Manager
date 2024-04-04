@@ -11,7 +11,7 @@ const { green } = Colors
 const Account = ({ navigation }) => {
   const [loading, setLoading] = useState(false)
   const { userData, setUserData } = useContext(UserContext);
-  const { national_id_number } = userData
+  const { id_number } = userData
 
   const clearUserData = () => {
     AsyncStorage.removeItem('userSessionData')
@@ -25,7 +25,8 @@ const Account = ({ navigation }) => {
 
   const handleLogout = () => {
     setLoading(true);
-    logoutUser(national_id_number, clearUserData, setLoading);
+    console.log(id_number)
+    logoutUser(id_number, clearUserData, setLoading);
   }
 
   return (
