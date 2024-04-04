@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import * as Icon from 'react-native-feather';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// Styled components
 import { Container, InnerContainer, CardContainer, CardView, CardTitle, Colors, Line, PageTitle, SubHeading,
 LicenseListsView
 } from '../components/styles'
+// import { UserContext } from '../components/UserContext';
 
 const { green, platinum } = Colors
 
 const Home = ({ navigation }) => {
+  // const { userData, setUserData } = useContext(UserContext);
   return (
     <Container isWhite={true}>
       <StatusBar style="dark" />
