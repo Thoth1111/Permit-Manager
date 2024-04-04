@@ -2,48 +2,50 @@ import axios from 'axios';
 const URL = process.env.CLM_API_URL;
 
 // Register a user
-const createAccount = async (values, navigateCallback, setLoading) => {
+const createAccount = async (values, setLoading, sessionPersist) => {
     await axios.post(`${URL}/user/register`, values)
         .then((res) => {
             console.log(`${res.status}: ${res.message}`);
-            if (res.status === 201) {
-                // setLoading(false);
-                setLoading(false);
-                navigateCallback('Login');                
-            //     console.log(response.status);
-            //     navigation.navigate('Home');
-            // } else {
-                // setLoading(false);
-            //     alert('Error logging in. Check server logs')
-            }
-            alert(res.status)
+            sessionPersist({id_number: res.data.id_number, refreshToken: res.data.refreshToken});
+                // navigateCallback('Login');
         })
         .catch((err) => {
             console.log(err);
-            // setLoading(false);
-        });
+        })
+        .finally(() => {
+            setLoading(false);
+        })
 }
 
 // Login a user
-const loginUser = async (values) => {
+const loginUser = async (values, setLoading, sessionPersist) => {
     await axios.post('https://clm-server.onrender.com/user/login', values)
-                .then((res) => {
-                    console.log(res);
-                    if (res.status === 200) {
-                    //     setLoading(false);
-                    //     console.log(response.status);
-                    //     navigation.navigate('Home');
-                    // } else {
-                        alert(`Success! ${res.refreshtoken}`)
-                        // setLoading(false);
-                    //     alert('Error logging in. Check server logs')
-                    }
-                    alert(res.status)
-                })
-                .catch((err) => {
-                    console.log(err);
-                    // setLoading(false);
-                });
+        .then((res) => {
+            console.log(`${res.status}: ${res.data.message}`);
+            sessionPersist({id_number: res.data.id_number, refreshToken: res.data.refreshToken});
+                // navigateCallback('Home');
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+        .finally(() => {
+            setLoading(false);
+        });
 }
 
-export { createAccount, loginUser };
+// Logout a user
+const logoutUser = async (id_number, clearUserData, setLoading) => {
+    await axios.delete(`https://clm-server.onrender.com/user/logout/${id_number}`)
+    .then((res) => {
+        console.log(`${res.status}: ${res.data.message}`);
+        clearUserData();
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+    .finally(() => {
+        setLoading(false);
+    });
+}
+
+export { createAccount, loginUser, logoutUser };
