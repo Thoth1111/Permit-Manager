@@ -3,9 +3,11 @@ import React from 'react';
 // React Navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// Token Context
+import { UserContext } from '../components/UserContext';
 
 // Screens
-import Splash from '../screens/Splash';
+import Landing from '../screens/Landing';
 import Login from '../screens/Login';
 import SignUp from '../screens/Signup';
 import Home from '../screens/Home';
@@ -19,29 +21,41 @@ const { white, green } = Colors;
 const Stack = createNativeStackNavigator();
 
 const RootStack = () => {
-  return (
-    <NavigationContainer>
-        <Stack.Navigator
-            screenOptions={{
-                headerStyle: {
-                    backgroundColor: 'transparent'
-                },
-                headerTitle: '',
-                headerTransparent: true,
-                headerTintColor: green,
+    return (
+        <UserContext.Consumer>
+            {({ userData }) => {
+                <NavigationContainer>
+                    <Stack.Navigator
+                        screenOptions={{
+                            headerStyle: {
+                                backgroundColor: 'transparent'
+                            },
+                            headerTitle: '',
+                            headerTransparent: true,
+                            headerTintColor: green,
+                        }}
+                        initialRouteName='Landing'
+                    >   {userData ?
+                        (
+                            <>
+                                <Stack.Screen name="Home" component={Home} />
+                                <Stack.Screen name="Licenses" component={Licenses} />
+                                <Stack.Screen name="Payments" component={Payments} />
+                                <Stack.Screen name="Account" component={Account} />
+                            </>
+                        ) : (
+                            <>
+                                <Stack.Screen name="Landing" component={Landing} />
+                                <Stack.Screen options={{ headerTintColor: white }} name="Login" component={Login} />
+                                <Stack.Screen options={{ headerTintColor: white }} name="SignUp" component={SignUp} />
+                            </>
+                        )}
+                    </Stack.Navigator>
+                </NavigationContainer>
             }}
-            initialRouteName='Splash'
-        >   
-            <Stack.Screen name="Splash" component={Splash} />
-            <Stack.Screen options={{headerTintColor: white}} name="Login" component={Login} />
-            <Stack.Screen options={{headerTintColor: white}} name="SignUp" component={SignUp} />
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Licenses" component={Licenses} />
-            <Stack.Screen name="Payments" component={Payments} />
-            <Stack.Screen name="Account" component={Account} />
-        </Stack.Navigator>
-    </NavigationContainer>
-  )
+        </UserContext.Consumer>
+
+    )
 }
 
 export default RootStack
