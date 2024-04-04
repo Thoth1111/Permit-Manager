@@ -1,59 +1,45 @@
 import React, { useState, useEffect } from 'react';
 // React Navigation Stack
 import RootStack from './navigators/RootStack';
-// Splash Screen
-// import * as SplashScreen from 'expo-splash-screen';
 // Async Storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // User Context
 import { UserContext } from './components/UserContext';
-// import Splash from './components/Splash';
+// Splash Screen
+import Splash from './components/Splash';
 
 export default function App({ navigation }) {
-  // const [appReady, setAppReady] = useState(false);
+  const [appReady, setAppReady] = useState(false);
   const [userData, setUserData] = useState(null);
 
   const checkUserData = async () => {
-    console.log('Checking for data')
+    console.log('Checking user data')
     await AsyncStorage.getItem('userSessionData')
       .then((userSessionData) => {
         if (userSessionData !== null) {
+          console.log('User data found')
           setUserData(JSON.parse(userSessionData))
         } else {
+          console.log('No user data found')
           setUserData(null)
         }
       })
       .catch((err) => {
         console.log(err)
       })
-    // .finally(() => {
-    //   SplashScreen.hideAsync()
-    //   .then((result) => {
-    //     console.log(`Splash Screen Hidden: ${result}`)
-    //   })
-    //   .catch((err) => {
-    //     console.log(err)
-    //   })
-    // })
+      .finally(() => {
+        console.log('final callback executed')
+        setAppReady(true)
+      })
   }
-  // checkUserData();
 
-  // useEffect(() => {
-  // const prepare = async () => {
-  //   await SplashScreen.preventAutoHideAsync()
-  //   .then(() => {
-  // checkUserData();
-  //   })
-  //   .catch((err) => {
-  //     console.log(err)
-  //   })
-  // }
-  // prepare();
-  // }, []);
+  useEffect(() => {
+    checkUserData();
+  }, []);
 
-  // if (!appReady) {
-  //   return <Splash />;
-  // }
+  if (!appReady) {
+    return <Splash />;
+  }
 
   return (
     <UserContext.Provider value={({ userData, setUserData })}>
