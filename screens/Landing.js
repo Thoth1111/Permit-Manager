@@ -4,7 +4,7 @@ import { Container, InnerContainer, AppLogo, PageTitle, StyledButton, ButtonText
 
 const { green } = Colors
 
-const Splash = ({ navigation }) => {
+const Landing = ({ navigation }) => {
     return (
         <Container color={green}>
             <StatusBar style="light" />
@@ -22,4 +22,4 @@ const Splash = ({ navigation }) => {
     )
 }
 
-export default Splash
+export default Landing
