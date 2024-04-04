@@ -23,7 +23,7 @@ const Stack = createNativeStackNavigator();
 const RootStack = () => {
     return (
         <UserContext.Consumer>
-            {({ userData }) => {
+            {({ userData }) => (
                 <NavigationContainer>
                     <Stack.Navigator
                         screenOptions={{
@@ -35,8 +35,8 @@ const RootStack = () => {
                             headerTintColor: green,
                         }}
                         initialRouteName='Landing'
-                    >   {userData ?
-                        (
+                    >
+                        {userData ? (
                             <>
                                 <Stack.Screen name="Home" component={Home} />
                                 <Stack.Screen name="Licenses" component={Licenses} />
@@ -52,7 +52,7 @@ const RootStack = () => {
                         )}
                     </Stack.Navigator>
                 </NavigationContainer>
-            }}
+            )}
         </UserContext.Consumer>
 
     )
