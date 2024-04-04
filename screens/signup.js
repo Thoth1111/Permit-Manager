@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import MyTextInput from '../components/MyTextInput.js';
 import { Formik } from 'formik';
-// Styled Components
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {
     Container, InnerContainer, PageTitle, SubHeading, FormArea, StyledButton, ButtonText, Colors, MsgBox,
     Line, ExtraView, ExtraText, TextLink, TextLinkContent
 } from '../components/styles.js';
-// Helpers
-import { validateEmail, validateNationalId, validatePhoneNumber, validatePassword } from '../helpers/validations.js';
-// Keyboard Averse Wrapper
 import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper.js';
-// API Requests
+import { UserContext } from '../components/UserContext.js';
+
+import { validateEmail, validateNationalId, validatePhoneNumber, validatePassword } from '../helpers/validations.js';
+
 import { createAccount } from '../API/userRequests.js';
 
 // Colors
@@ -20,16 +21,26 @@ const { platinum, green } = Colors;
 const SignUp = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true)
     const [loading, setLoading] = useState(false)
+    // const navigateCallback = (screen) => navigation.navigate(screen);
+    const { setUserData } = useContext(UserContext);
 
-    const handleSignUp = async (values) => {
+    const sessionPersist = (incomingUserData) => {
+        AsyncStorage.setItem('userSessionData', JSON.stringify(incomingUserData))
+        .then(()=> {
+            setUserData(incomingUserData)
+            console.log(incomingUserData)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+
+    const handleSignUp = (values) => {
         if (validateEmail(values.email) && validateNationalId(values.national_id_number) && validatePhoneNumber(values.phone_number) && validatePassword(values.password, values.confirm_password)) {            
             setLoading(true)
-            console.log(loading);
-            await createAccount(values)
-            setLoading(false)
-        } else {
-            alert('Please fill in all fields');
+            createAccount(values, setLoading, sessionPersist)
         }
+        return;
     }
 
     return (
@@ -41,10 +52,8 @@ const SignUp = ({ navigation }) => {
                     <SubHeading>Register</SubHeading>
                     <Formik
                         initialValues={{ email: '', national_id_number: '', phone_number: '', password: '', confirm_password: '' }}
-                        onSubmit={(values) => {
-                            setLoading(true)
-                            handleSignUp(values)
-                        }}
+                        onSubmit={(values) => handleSignUp(values)
+                        }
                     >
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
                             <FormArea>
