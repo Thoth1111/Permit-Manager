@@ -21,14 +21,14 @@ const { jet, caribbean, white, platinum, indigo, green, yellow } = Colors;
 export const Container = styled.View`
     flex: 1;
     padding: 20px;
-    background-color: ${ props => props.color ? props.color : white };
+    background-color: ${props => props.color ? props.color : white};
     padding-top: ${statusBarHeight + 30}px;
 `
 export const InnerContainer = styled.View`
     flex: 1;
     width: 100%;
     align-items: center;
-    background-color: ${ props => props.color ? props.color : white };
+    background-color: ${props => props.color ? props.color : white};
 `
 export const AppLogo = styled.Image`
     width: 250px;
@@ -40,7 +40,7 @@ export const PageTitle = styled.Text`
     font-size: 24px;
     text-align: center;
     font-weight: semibold;
-    color: ${ props => props.color ? props.color : white };
+    color: ${props => props.color ? props.color : white};
     padding: 10px;
 `
 export const SubHeading = styled.Text`
@@ -48,12 +48,12 @@ export const SubHeading = styled.Text`
     margin-bottom: 20px;
     letter-spacing: 1px;
     font-weight: bold;
-    color: ${ props => props.color ? props.color : yellow };
+    color: ${props => props.color ? props.color : yellow};
 `
 export const FormArea = styled.View`
     width: 90%;
 `
-export const StyledTextInput = styled.TextInput`
+export const AuthTextInput = styled.TextInput`
     background-color: ${white};
     padding: 15px;
     padding-left: 55px;
@@ -65,7 +65,7 @@ export const StyledTextInput = styled.TextInput`
     margin-bottom: 10px;
     color: ${jet};
 `
-export const StyledInputLabel = styled.Text`
+export const AuthInputLabel = styled.Text`
     color: ${white};
     font-size: 13px;
     text-align: left;
@@ -103,10 +103,10 @@ export const MsgBox = styled.Text`
 export const Line = styled.View`
     height: 1px;
     width: 100%;
+    margin-vertical: 5px;
     background-color: ${platinum};
-    margin-vertical: 10px;
 `
-export const ExtraView =  styled.View`
+export const ExtraView = styled.View`
     justify-content: center;
     flex-direction: row;
     align-items: center;
@@ -128,12 +128,26 @@ export const TextLinkContent = styled.Text`
     font-size: 15px;
 `
 export const CardContainer = styled.View`
-    flex: 1;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    height: fit-content;
     justify-content: center;
-    margin-top: 20px;
+    margin-vertical: 10px;
+`
+export const FittedContainer = styled.View`
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-text: center;
+`
+export const FloatingButton = styled.TouchableOpacity`
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
 `
 export const CardView = styled.TouchableOpacity`
     background-color: ${yellow};
@@ -151,11 +165,59 @@ export const CardTitle = styled.Text`
     font-weight: bold;
     color: ${jet};
 `
-export const LicenseListsView = styled.View`
-    flex: 3;
+export const ListsView = styled.View`
+    flex: 1;
     width: 100%;
     padding: 8px;
     justify-content: start;
     align-items: center;
+    overflow: hidden;
+`
+export const ModalView = styled.View`
+    flex: 1;
+    justifyContent: center;
+    alignItems: center;
+    marginTop: 22px;
+    backgroundColor: ${green};
+`
+export const ModalContentView = styled.Modal`
+    background-color: ${yellow};
+    padding: 20px;
+    margin: 20px;
+    border-radius: 15px;
+    align-items: center;
+    shadow-color: #000;
+    shadow-offset: {
+        width: 0;
+        height: 2;
+    };
+    shadow-opacity: 0.25;
+    shadow-radius: 4px;
+    elevation: 5;
+`
+export const StyledTextInput = styled.TextInput`
+    background-color: ${white};
+    padding: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid ${jet};
+    border-radius: 5px;
+    font-size: 16px;
+    height: 60px;
+    margin-vertical: 3px;
     margin-bottom: 10px;
+    color: ${jet};
+`
+export const StyledInputLabel = styled.Text`
+    color: ${jet};
+    font-size: 13px;
+    text-align: left;
+`
+export const RowedView = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-vertical: 10px;
+    height: fit-content;
+    padding: 10px;
 `
