@@ -1,27 +1,43 @@
-import React from 'react'
+import React, { useState, useContext } from 'react'
 import * as Icon from 'react-native-feather'
-import { Container, InnerContainer, PageTitle, SubHeading, LicenseListsView, Line, Colors, CardContainer, StyledButton, ButtonText } from '../components/styles'
+import { Container, InnerContainer, PageTitle, SubHeading, ListsView, Line, Colors, CardContainer, FittedContainer, FloatingButton, StyledButton, ButtonText } from '../components/styles'
+import LicenseForm from '../components/LicenseForm';
 
 const { green, platinum } = Colors;
 
-const Licenses = ({ navigation }) => {
+const Licenses = () => {
+    const [newLicense, setNewLicense] = useState(false)
+    
+    const closeForm = () => {
+        setNewLicense(false)
+    }
+
     return (
         <Container >
             <InnerContainer>
                 <PageTitle color={green}>Your Licenses</PageTitle>
                 <CardContainer>
                     <Line />
-                    <StyledButton style={{ flexDirection: 'row' }}>
-                        <Icon.FilePlus size={50} color={green} />
-                        <ButtonText>Add</ButtonText>
-                    </StyledButton>
+                    {newLicense ? (
+                        <FittedContainer>
+                            <FloatingButton onPress={() => setNewLicense(false)} >
+                                <Icon.X size={30} color={green} />
+                            </FloatingButton>
+                            <LicenseForm closeForm={closeForm}/>
+                        </FittedContainer>
+                    ) : (
+                        <StyledButton onPress={() => setNewLicense(true)} style={{ flexDirection: 'row' }}>
+                            <Icon.FilePlus size={50} color={green} />
+                            <ButtonText>Add A License</ButtonText>
+                        </StyledButton>
+                    )}
                     <Line />
                 </CardContainer>
-                <LicenseListsView>
-                    <SubHeading color={platinum}>Current Licenses</SubHeading>
-                </LicenseListsView>
+                <ListsView>
+                    <SubHeading color={platinum} >Saved Licenses</SubHeading>
+                </ListsView>
             </InnerContainer>
-        </Container>
+        </Container >
     )
 }
 
