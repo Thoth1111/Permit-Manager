@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
+import { ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Formik } from 'formik';
 
-import MyTextInput from '../components/MyTextInput.js';
+import TextIconInput from '../components/TextIconInput.js';
+
 import {
     Container, InnerContainer, PageTitle, SubHeading, FormArea, StyledButton, ButtonText, Colors, MsgBox,
     Line, ExtraView, ExtraText, TextLink, TextLinkContent
@@ -19,9 +21,8 @@ const { platinum, green } = Colors;
 const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true)
     const [loading, setLoading] = useState(false)
-    // const navigateCallback = (screen) => navigation.navigate(screen);
 
-    const { userData, setUserData } = useContext(UserContext);
+    const { setUserData } = useContext(UserContext);
    
     const sessionPersist = (incomingUserData) => {
         AsyncStorage.setItem('userSessionData', JSON.stringify(incomingUserData))
@@ -55,7 +56,7 @@ const Login = ({ navigation }) => {
                     >
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
                             <FormArea style={{ marginTop: '15%' }}>
-                                <MyTextInput
+                                <TextIconInput
                                     label="National Id Number"
                                     placeholder="e.g 12345678"
                                     placeholderTextColor={platinum}
@@ -65,7 +66,7 @@ const Login = ({ navigation }) => {
                                     value={values.national_id_number}
                                     keyboardType="numeric"
                                 />
-                                <MyTextInput
+                                <TextIconInput
                                     label="Password"
                                     placeholder="* * * * * * * *"
                                     placeholderTextColor={platinum}
@@ -79,9 +80,15 @@ const Login = ({ navigation }) => {
                                     setHidePassword={setHidePassword}
                                 />
                                 <MsgBox>...</MsgBox>
+                                {loading ? (
+                                    <StyledButton disabled={true}>
+                                        <ActivityIndicator size="large" color={green} />
+                                    </StyledButton>
+                                ) : (
                                 <StyledButton onPress={handleSubmit}>
                                     <ButtonText>Login</ButtonText>
                                 </StyledButton>
+                                )}
                             </FormArea>
                         )}
                     </Formik>
