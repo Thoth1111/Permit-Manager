@@ -1,6 +1,6 @@
 import React from 'react'
 // Styled Components
-import { Container, InnerContainer, PageTitle, CardContainer, Line, StyledButton, ButtonText, LicenseListsView, SubHeading, Colors } from '../components/styles'
+import { Container, InnerContainer, PageTitle, CardContainer, Line, StyledButton, ButtonText, ListsView, SubHeading, Colors } from '../components/styles'
 
 // Feather Icons
 import * as Icon from 'react-native-feather'
@@ -18,9 +18,9 @@ const Payments = ({ navigation }) => {
                     </StyledButton>
                     <Line />
                 </CardContainer>
-                <LicenseListsView>
+                <ListsView>
                     <SubHeading color={platinum}>Transactions</SubHeading>
-                </LicenseListsView>
+                </ListsView>
             </InnerContainer>
         </Container>
     )
