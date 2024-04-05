@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { ActivityIndicator } from 'react-native'
 import * as Icon from 'react-native-feather'
 import { Container, InnerContainer, PageTitle, CardContainer, Line, StyledButton, ButtonText, Colors } from '../components/styles'
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -15,33 +16,36 @@ const Account = ({ navigation }) => {
 
   const clearUserData = () => {
     AsyncStorage.removeItem('userSessionData')
-    .then(() => {
-      setUserData(null)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+      .then(() => {
+        setUserData(null)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   const handleLogout = () => {
     setLoading(true);
-    console.log(id_number)
     logoutUser(id_number, clearUserData, setLoading);
   }
 
   return (
     <Container>
-        <InnerContainer>
-            <PageTitle color={green}>Account</PageTitle>
-            <CardContainer>
-                <Line />
-                <StyledButton onPress={handleLogout} style={{ flexDirection: 'row' }}>
-                    <Icon.LogOut size={50} color={green} />
-                    <ButtonText>Log Out</ButtonText>
-                </StyledButton>
-                <Line />
-            </CardContainer>
-        </InnerContainer>
+      <InnerContainer>
+        <PageTitle color={green}>Account</PageTitle>
+        {loading ? (
+          <ActivityIndicator size="large" color={green} />
+        ) : (
+          <CardContainer>
+            <Line />
+            <StyledButton onPress={handleLogout} style={{ flexDirection: 'row' }}>
+              <Icon.LogOut size={50} color={green} />
+              <ButtonText>Log Out</ButtonText>
+            </StyledButton>
+            <Line />
+          </CardContainer>
+        )}
+      </InnerContainer>
     </Container>
   )
 }
