@@ -4,7 +4,7 @@ import * as Icon from 'react-native-feather';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Container, InnerContainer, CardContainer, CardView, CardTitle, Colors, Line, PageTitle, SubHeading,
-LicenseListsView
+ListsView
 } from '../components/styles'
 // import { UserContext } from '../components/UserContext';
 
@@ -33,9 +33,9 @@ const Home = ({ navigation }) => {
           </CardView>
           <Line />
         </CardContainer>        
-        <LicenseListsView>
+        <ListsView>
           <SubHeading color={platinum} >Upcoming Payments</SubHeading>
-        </LicenseListsView>
+        </ListsView>
       </InnerContainer>
     </Container>
   )
