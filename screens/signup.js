@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
+import { ActivityIndicator } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import MyTextInput from '../components/MyTextInput.js';
+import TextIconInput from '../components/TextIconInput.js';
 import { Formik } from 'formik';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -21,22 +22,21 @@ const { platinum, green } = Colors;
 const SignUp = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true)
     const [loading, setLoading] = useState(false)
-    // const navigateCallback = (screen) => navigation.navigate(screen);
     const { setUserData } = useContext(UserContext);
 
     const sessionPersist = (incomingUserData) => {
         AsyncStorage.setItem('userSessionData', JSON.stringify(incomingUserData))
-        .then(()=> {
-            setUserData(incomingUserData)
-            console.log(incomingUserData)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            .then(() => {
+                setUserData(incomingUserData)
+                console.log(incomingUserData)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     const handleSignUp = (values) => {
-        if (validateEmail(values.email) && validateNationalId(values.national_id_number) && validatePhoneNumber(values.phone_number) && validatePassword(values.password, values.confirm_password)) {            
+        if (validateEmail(values.email) && validateNationalId(values.national_id_number) && validatePhoneNumber(values.phone_number) && validatePassword(values.password, values.confirm_password)) {
             setLoading(true)
             createAccount(values, setLoading, sessionPersist)
         }
@@ -57,7 +57,7 @@ const SignUp = ({ navigation }) => {
                     >
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
                             <FormArea>
-                                <MyTextInput
+                                <TextIconInput
                                     label="Email"
                                     placeholder=""
                                     placeholderTextColor={platinum}
@@ -67,7 +67,7 @@ const SignUp = ({ navigation }) => {
                                     value={values.email}
                                     keyboardType="email-address"
                                 />
-                                <MyTextInput
+                                <TextIconInput
                                     label="National Id Number"
                                     placeholder="e.g 12345678"
                                     placeholderTextColor={platinum}
@@ -77,7 +77,7 @@ const SignUp = ({ navigation }) => {
                                     value={values.national_id_number}
                                     keyboardType="numeric"
                                 />
-                                <MyTextInput
+                                <TextIconInput
                                     label="Phone Number"
                                     placeholder="e.g 0712345678"
                                     placeholderTextColor={platinum}
@@ -87,7 +87,7 @@ const SignUp = ({ navigation }) => {
                                     value={values.phone_number}
                                     keyboardType="numeric"
                                 />
-                                <MyTextInput
+                                <TextIconInput
                                     label="Password"
                                     placeholder="* * * * * * * *"
                                     placeholderTextColor={platinum}
@@ -100,7 +100,7 @@ const SignUp = ({ navigation }) => {
                                     hidePassword={hidePassword}
                                     setHidePassword={setHidePassword}
                                 />
-                                <MyTextInput
+                                <TextIconInput
                                     label="Confirm Password"
                                     iconName="Key"
                                     onChangeText={handleChange('confirm_password')}
@@ -109,19 +109,28 @@ const SignUp = ({ navigation }) => {
                                     secureTextEntry={true}
                                 />
                                 <MsgBox>...</MsgBox>
-                                <StyledButton onPress={handleSubmit}>
-                                    <ButtonText>Register</ButtonText>
-                                </StyledButton>
+                                {loading ? (
+                                    <StyledButton disabled={true}>
+                                        <ActivityIndicator size="large" color={green} />
+                                    </StyledButton>
+                                ) : (
+                                    <StyledButton onPress={handleSubmit}>
+                                        <ButtonText>Register</ButtonText>
+                                    </StyledButton>
+                                )}
                             </FormArea>
                         )}
                     </Formik>
                     <Line />
-                    <ExtraView>
-                        <ExtraText>Already have an account?</ExtraText>
-                        <TextLink onPress={() => navigation.navigate('Login')}>
-                            <TextLinkContent>Sign In</TextLinkContent>
-                        </TextLink>
-                    </ExtraView>
+                    {!loading &&
+                        (<ExtraView>
+                            <ExtraText>Already have an account?</ExtraText>
+                            <TextLink onPress={() => navigation.navigate('Login')}>
+                                <TextLinkContent>Sign In</TextLinkContent>
+                            </TextLink>
+                        </ExtraView>
+                        )
+                    }
                 </InnerContainer>
             </Container>
         </KeyboardAverseWrapper>
