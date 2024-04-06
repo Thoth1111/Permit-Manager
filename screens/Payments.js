@@ -5,7 +5,7 @@ import { Container, InnerContainer, PageTitle, CardContainer, Line, StyledButton
 // Feather Icons
 import * as Icon from 'react-native-feather'
 
-const { green, platinum } = Colors
+const { green } = Colors
 const Payments = ({ navigation }) => {
     return (
         <Container >
@@ -19,7 +19,7 @@ const Payments = ({ navigation }) => {
                     <Line />
                 </CardContainer>
                 <ListsView>
-                    <SubHeading color={platinum}>Transactions</SubHeading>
+                    <SubHeading color={green}>Transactions</SubHeading>
                 </ListsView>
             </InnerContainer>
         </Container>
