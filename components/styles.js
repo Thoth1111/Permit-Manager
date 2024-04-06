@@ -7,15 +7,15 @@ const statusBarHeight = Constants.statusBarHeight;
 // Colors
 export const Colors = {
     jet: "#353535ff",
-    caribbean: "#3c6e71ff",
+    amber: "#FFA07A",
     white: "#ffffffff",
     platinum: "#d9d9d9ff",
-    indigo: "#284b63ff",
+    red: "#FF0000",
     green: "#013D1E",
     yellow: "#FFCA0A"
 };
 
-const { jet, caribbean, white, platinum, indigo, green, yellow } = Colors;
+const { jet, amber, white, platinum, red, green, yellow } = Colors;
 
 // Container
 export const Container = styled.View`
@@ -45,7 +45,7 @@ export const PageTitle = styled.Text`
 `
 export const SubHeading = styled.Text`
     font-size: 18px;
-    margin-bottom: 20px;
+    margin-vertical: 10px;
     letter-spacing: 1px;
     font-weight: bold;
     color: ${props => props.color ? props.color : yellow};
@@ -141,6 +141,38 @@ export const FittedContainer = styled.View`
     justify-content: center;
     align-text: center;
 `
+export const ListContainer = styled.TouchableOpacity`
+    flex-direction: row;
+    background-color: ${white};
+    width: 97%;
+    height: 20%;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0px;
+    margin: 2px;
+`
+export const SectionView = styled.View`
+    width: 25%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+`
+export const MidSectionView = styled.View`
+    width: 50%;
+    height: fit-content;
+    justify-content: center;
+    align-items: flex-start;
+`
+export const SectionText = styled.Text`
+    font-size: 16px;
+    font-weight: bold;
+    color: ${jet};    
+`
+export const SectionDate = styled.Text`
+    font-size: 14px;
+    color: ${props => props.color ? props.color : jet};
+`
 export const FloatingButton = styled.TouchableOpacity`
     position: absolute;
     top: 0;
@@ -159,6 +191,14 @@ export const CardView = styled.TouchableOpacity`
     margin: 8px;
     padding: 10px;
     border-radius: 20px;
+    shadow-color: #000;
+    shadow-offset: {
+        width: 0;
+        height: 2;
+    };
+    shadow-opacity: 0.25;
+    shadow-radius: 4px;
+    elevation: 5;
 `
 export const CardTitle = styled.Text`
     font-size: 14px;
@@ -168,32 +208,12 @@ export const CardTitle = styled.Text`
 export const ListsView = styled.View`
     flex: 1;
     width: 100%;
-    padding: 8px;
+    padding: 0px;
     justify-content: start;
     align-items: center;
-    overflow: hidden;
-`
-export const ModalView = styled.View`
-    flex: 1;
-    justifyContent: center;
-    alignItems: center;
-    marginTop: 22px;
-    backgroundColor: ${green};
-`
-export const ModalContentView = styled.Modal`
-    background-color: ${yellow};
-    padding: 20px;
-    margin: 20px;
     border-radius: 15px;
-    align-items: center;
-    shadow-color: #000;
-    shadow-offset: {
-        width: 0;
-        height: 2;
-    };
-    shadow-opacity: 0.25;
-    shadow-radius: 4px;
-    elevation: 5;
+    overflow: hidden;
+    background-color: ${platinum};
 `
 export const StyledTextInput = styled.TextInput`
     background-color: ${white};
@@ -215,9 +235,10 @@ export const StyledInputLabel = styled.Text`
 `
 export const RowedView = styled.View`
     flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    margin-vertical: 10px;
+    justify-content: start;
+    align-items: center;
+    width: fit-content;
+    gap: 10px;
+    margin-top: 15px;
     height: fit-content;
-    padding: 10px;
 `
