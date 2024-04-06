@@ -5,8 +5,8 @@ const Stacy1 = {
         business_id: "4143",
         kra_pin: "A12345678",
         activity_code: "895",
-        effective_date: "2023-03-26",
-        expiry_date: "2024-03-26",
+        effective_date: "2023-04-26",
+        expiry_date: "2024-04-26",
         location: {
             constituency: "Roysambu",
             ward: "Kahawa",
