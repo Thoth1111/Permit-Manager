@@ -30,7 +30,6 @@ const loginUser = async (values, setLoading, sessionPersist) => {
 
 // Logout a user
 const logoutUser = async (id_number, clearUserData, setLoading) => {
-    console.log(`Logging out user with id number ${id_number}`)
     await axios.delete(`https://clm-server.onrender.com/user/logout/${id_number}`)
     .then(() => {
         clearUserData();
