@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Get all user licenses
-const getAllLicenses = async (refreshToken, setLoading) => {
+const getAllLicenses = async (refreshToken, setLoading, setLicenseState) => {
     await axios.get('https://clm-server.onrender.com/license/saved',
     {
         headers: {
@@ -9,7 +9,7 @@ const getAllLicenses = async (refreshToken, setLoading) => {
         }
     })
     .then ((res) => {
-        console.log(res.data)
+        setLicenseState(res.data.licenses)
     })
     .catch((err) => {
         console.log(err)
