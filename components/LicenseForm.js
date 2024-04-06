@@ -15,7 +15,6 @@ const LicenseForm = ({ closeForm }) => {
     const { userData } = useContext(UserContext);
 
     const handleRetrieve = (id) => {
-        console.log(id)
         if (validateBusinessId(id)) {
             setLoading(true)
             const userLicenseInfo = demoLicenses.find(userLicense => userLicense.user_id === userData.id_number && userLicense.license_info.business_id === id)
@@ -35,7 +34,6 @@ const LicenseForm = ({ closeForm }) => {
             <Formik
                 initialValues={{ business_id: '' }}
                 onSubmit={(values) => {
-                    console.log(values)
                     handleRetrieve(values.business_id)
                 }}
             >
