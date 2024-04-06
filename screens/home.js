@@ -11,8 +11,9 @@ import { UserContext } from '../components/UserContext';
 import { getAllLicenses } from '../API/licenseRequests';
 import { filteredLicenses } from '../redux/selectors';
 import { saveLicenses } from '../redux/licenseSlice';
+import DueList from '../components/DueList';
 
-const { green, platinum } = Colors
+const { green, red, amber } = Colors
 
 const Home = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
@@ -20,14 +21,26 @@ const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const dueLicenses = useSelector(filteredLicenses);
 
-  const setLicenseState = (incomingLicenses) => {
-    dispatch(saveLicenses(incomingLicenses));
-  }
-
   const fetchLicenses = useCallback(() => {
     setLoading(true);
     getAllLicenses(userData.refreshToken, setLoading, setLicenseState)
   }, [userData, dispatch]);
+
+  const setLicenseState = (incomingLicenses) => {
+    dispatch(saveLicenses(incomingLicenses));
+  }
+
+  const handleColorAlerts = (expiry_date) => {
+    const expiryDate = new Date(expiry_date);
+    const today = new Date();
+    const timeDiff = expiryDate - today;
+    const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+    console.log(`Days diff: ${daysDiff}, Expiry Date: ${expiryDate}`)
+    if (daysDiff <= 0) {
+      return red;
+    }
+    return amber;;
+  }
 
   useEffect(() => {
     fetchLicenses();
@@ -55,21 +68,19 @@ const Home = ({ navigation }) => {
           <Line />
         </CardContainer>
         <ListsView>
-          <SubHeading color={platinum} >Due Renewals</SubHeading>
+          <SubHeading color={green} >Renewals Due</SubHeading>
           {loading ? (
             <ActivityIndicator size="large" color={green} />
           ) : (
             <>
               {dueLicenses.length > 0 && dueLicenses.map((license, i) => (
-                <FittedContainer key={i}>
-                  {/* <Line /> */}
-                  {/* <CardView onPress={() => navigation.navigate('License', { license })}> */}
-                  <CardView>
-                    <Icon.FileText size={50} color={green} />
-                    <CardTitle>{license.business_name}</CardTitle>
-                  </CardView>
-                  <Line />
-                </FittedContainer>
+                <DueList
+                  key={i}
+                  color={handleColorAlerts(license.expiry_date)}
+                  businessName={license.business_name}
+                  expiryDate={license.expiry_date}
+                  // onPress={() => navigation.navigate('License', { license })}
+                />
               ))}
             </>
           )}
