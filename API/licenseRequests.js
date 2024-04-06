@@ -28,7 +28,7 @@ const getLicense = async (license_id, refreshToken, setLoading) => {
         }
     })
     .then ((res) => {
-        console.log(res.data)
+        console.log(res.data.license)
     })
     .catch ((err) => {
         console.log(err)
@@ -49,7 +49,7 @@ const addLicense = async (values, refreshToken, setLoading, closeForm) => {
     .then((res) => {
         console.log(res.data)
         alert('License saved')
-        closeForm()
+        closeForm(res.data.newLicense)
     })
     .catch((err) => {
         console.log(err)
