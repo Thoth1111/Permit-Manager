@@ -28,7 +28,6 @@ const Login = ({ navigation }) => {
         AsyncStorage.setItem('userSessionData', JSON.stringify(incomingUserData))
             .then(() => {
                 setUserData(incomingUserData)
-                console.log(incomingUserData)
             })
             .catch((err) => {
                 console.log(err)
