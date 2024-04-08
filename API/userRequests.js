@@ -1,4 +1,6 @@
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { clearLicenses } from  '../redux/licenseSlice';
 
 // Register a user
 const createAccount = async (values, setLoading, sessionPersist) => {
@@ -28,11 +30,22 @@ const loginUser = async (values, setLoading, sessionPersist) => {
         });
 }
 
+clearUserData = async (dispatch, setUserData) => {
+    await AsyncStorage.removeItem('userSessionData')
+        .then(() => {
+            dispatch(clearLicenses())
+            setUserData(null)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
+
 // Logout a user
-const logoutUser = async (id_number, clearUserData, setLoading) => {
+const logoutUser = async (id_number, setLoading, dispatch, setUserData) => {
     await axios.delete(`https://clm-server.onrender.com/user/logout/${id_number}`)
     .then(() => {
-        clearUserData();
+        clearUserData(dispatch, setUserData);
     })
     .catch((err) => {
         console.log(err);
