@@ -5,37 +5,31 @@ import { StatusBar } from 'expo-status-bar'
 import * as Icon from 'react-native-feather';
 import {
   Container, InnerContainer, CardContainer, CardView, CardTitle, Colors, Line, PageTitle, SubHeading,
-  ListsView, FittedContainer
+  ListsView, IconView
 } from '../components/styles'
 import { UserContext } from '../components/UserContext';
 import { getAllLicenses } from '../API/licenseRequests';
 import { filteredLicenses } from '../redux/selectors';
-import { saveLicenses } from '../redux/licenseSlice';
 import DueList from '../components/DueList';
 
 const { green, red, amber } = Colors
 
 const Home = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
-  const { userData } = useContext(UserContext);
+  const { userData, setUserData } = useContext(UserContext);
   const dispatch = useDispatch();
   const dueLicenses = useSelector(filteredLicenses);
 
   const fetchLicenses = useCallback(() => {
     setLoading(true);
-    getAllLicenses(userData.refreshToken, setLoading, setLicenseState)
+    getAllLicenses(userData, setLoading, dispatch, setUserData)
   }, [userData, dispatch]);
-
-  const setLicenseState = (incomingLicenses) => {
-    dispatch(saveLicenses(incomingLicenses));
-  }
 
   const handleColorAlerts = (expiry_date) => {
     const expiryDate = new Date(expiry_date);
     const today = new Date();
     const timeDiff = expiryDate - today;
     const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-    console.log(`Days diff: ${daysDiff}, Expiry Date: ${expiryDate}`)
     if (daysDiff <= 0) {
       return red;
     }
@@ -54,15 +48,12 @@ const Home = ({ navigation }) => {
         <CardContainer>
           <Line />
           <CardView onPress={() => navigation.navigate('Licenses')}>
-            <Icon.Folder size={50} color={green} />
             <CardTitle>Licenses</CardTitle>
           </CardView>
           <CardView onPress={() => navigation.navigate('Payments')}>
-            <Icon.CreditCard size={50} color={green} />
             <CardTitle>Payments</CardTitle>
           </CardView>
           <CardView onPress={() => navigation.navigate('Account')}>
-            <Icon.Tool size={50} color={green} />
             <CardTitle>Account</CardTitle>
           </CardView>
           <Line />
@@ -78,8 +69,9 @@ const Home = ({ navigation }) => {
                   key={i}
                   color={handleColorAlerts(license.expiry_date)}
                   businessName={license.business_name}
+                  _id={license._id}
                   expiryDate={license.expiry_date}
-                  // onPress={() => navigation.navigate('License', { license })}
+                  navigation={navigation}
                 />
               ))}
             </>
