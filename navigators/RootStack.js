@@ -12,6 +12,7 @@ import Login from '../screens/Login';
 import SignUp from '../screens/Signup';
 import Home from '../screens/Home';
 import Licenses from '../screens/Licenses';
+import MyLicense from '../screens/MyLicense';
 import Payments from '../screens/Payments';
 import Account from '../screens/Account';
 
@@ -40,6 +41,7 @@ const RootStack = () => {
                             <>
                                 <Stack.Screen name="Home" component={Home} />
                                 <Stack.Screen name="Licenses" component={Licenses} />
+                                <Stack.Screen name="MyLicense" component={MyLicense} />
                                 <Stack.Screen name="Payments" component={Payments} />
                                 <Stack.Screen name="Account" component={Account} />
                             </>
