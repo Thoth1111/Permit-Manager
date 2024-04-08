@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { View, Image, Text, TextInput } from 'react-native';
 import Constants from 'expo-constants';
 
 const statusBarHeight = Constants.statusBarHeight;
@@ -85,11 +84,20 @@ export const RightIcon = styled.TouchableOpacity`
 export const StyledButton = styled.TouchableOpacity`
     padding: 15px;
     background-color: ${yellow};
+    border: 1px solid ${green};
     justify-content: center;
     align-items: center;
     border-radius: 5px;
     margin-vertical: 5px;
     height: 60px;
+    shadow-color: #000;
+    shadow-offset: {
+        width: 0;
+        height: 2;
+    };
+    shadow-opacity: 0.25;
+    shadow-radius: 4px;
+    elevation: 5;
 `
 export const ButtonText = styled.Text`
     color: ${green};
@@ -144,8 +152,8 @@ export const FittedContainer = styled.View`
 export const ListContainer = styled.TouchableOpacity`
     flex-direction: row;
     background-color: ${white};
-    width: 97%;
-    height: 20%;
+    width: 98%;
+    height: 15%;
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
@@ -165,7 +173,7 @@ export const MidSectionView = styled.View`
     align-items: flex-start;
 `
 export const SectionText = styled.Text`
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     color: ${jet};    
 `
@@ -183,14 +191,14 @@ export const FloatingButton = styled.TouchableOpacity`
 `
 export const CardView = styled.TouchableOpacity`
     background-color: ${yellow};
-    border: ${platinum};
+    border: ${green};
     align-items: center;
     justify-content: center;
-    width: 95px;
-    height: 95px;
-    margin: 8px;
-    padding: 10px;
-    border-radius: 20px;
+    height: 50px;
+    width: fit-content;
+    margin: 6px;
+    paddingHorizontal: 10px;
+    border-radius: 5px;
     shadow-color: #000;
     shadow-offset: {
         width: 0;
@@ -201,13 +209,16 @@ export const CardView = styled.TouchableOpacity`
     elevation: 5;
 `
 export const CardTitle = styled.Text`
-    font-size: 14px;
+    font-size: 16px;
     font-weight: bold;
-    color: ${jet};
+    color: ${green};
+`
+export const IconView = styled.View`
+margin-right: 10px;
 `
 export const ListsView = styled.View`
     flex: 1;
-    width: 100%;
+    width: 110%;
     padding: 0px;
     justify-content: start;
     align-items: center;
