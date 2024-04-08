@@ -1,17 +1,22 @@
 import axios from 'axios';
+import { logoutUser } from './userRequests';
+import { saveLicenses } from '../redux/licenseSlice';
 
 // Get all user licenses
-const getAllLicenses = async (refreshToken, setLoading, setLicenseState) => {
+const getAllLicenses = async (userData, setLoading, dispatch, setUserData) => {
     await axios.get('https://clm-server.onrender.com/license/saved',
     {
         headers: {
-            Authorization: refreshToken
+            Authorization: userData.refreshToken
         }
     })
     .then ((res) => {
-        setLicenseState(res.data.licenses)
+        dispatch(saveLicenses(res.data.licenses))
     })
     .catch((err) => {
+        if(err.response.status === 401 || err.response.status === 403) {
+            logoutUser(userData.id_number, setLoading, dispatch, setUserData)
+        }
         console.log(err)
     })
     .finally(() => {
@@ -20,17 +25,20 @@ const getAllLicenses = async (refreshToken, setLoading, setLicenseState) => {
 }
 
 // Get a single license
-const getLicense = async (license_id, refreshToken, setLoading) => {
+const getLicense = async (license_id, userData, setLoading, dispatch, setUserData) => {
     await axios.get(`https://clm-server.onrender.com/license/${license_id}`, 
     {
         headers: {
-            Authorization: refreshToken
+            Authorization: userData.refreshToken
         }
     })
     .then ((res) => {
         console.log(res.data.license)
     })
     .catch ((err) => {
+        if(err.response.status === 401 || err.response.status === 403) {
+            logoutUser(userData.id_number, setLoading, dispatch, setUserData)
+        }
         console.log(err)
     })
     .finally(() => {
@@ -39,11 +47,11 @@ const getLicense = async (license_id, refreshToken, setLoading) => {
 }
 
 // Add a license
-const addLicense = async (values, refreshToken, setLoading, closeForm) => {
+const addLicense = async (values, userData, setLoading, dispatch, closeForm, setUserData) => {
     await axios.post('https://clm-server.onrender.com/license/new', values,
     {
         headers: {
-            Authorization: refreshToken
+            Authorization: userData.refreshToken
         }
     })
     .then((res) => {
@@ -52,6 +60,9 @@ const addLicense = async (values, refreshToken, setLoading, closeForm) => {
         closeForm(res.data.newLicense)
     })
     .catch((err) => {
+        if(err.response.status === 401 || err.response.status === 403) {
+            logoutUser(userData.id_number, setLoading, dispatch, setUserData)
+        }
         console.log(err)
     })
     .finally(() => {
@@ -60,17 +71,20 @@ const addLicense = async (values, refreshToken, setLoading, closeForm) => {
 }
 
 // Remove a license
-const deleteLicense = async (license_id, refreshToken, setLoading) => {
+const deleteLicense = async (license_id, userData, setLoading, setUserData) => {
     await axios.delete(`https://clm-server.onrender.com/license/${license_id}`,
     {
         headers: {
-            Authorization: refreshToken
+            Authorization: userData.refreshToken
         }
     })
     .then((res) => {
         console.log(res.data)
     })
     .catch((err) => {
+        if(err.response.status === 401 || err.response.status === 403) {
+            logoutUser(userData.id_number, setLoading, dispatch, setUserData)
+        }
         console.log(err)
     })
     .finally (() => {
