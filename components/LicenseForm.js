@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import { ActivityIndicator } from 'react-native';
 import { FormArea, StyledButton, ButtonText, FittedContainer, Colors } from './styles';
@@ -12,7 +13,8 @@ const { green, platinum } = Colors;
 
 const LicenseForm = ({ closeForm }) => {
     const [loading, setLoading] = useState(false);
-    const { userData } = useContext(UserContext);
+    const { userData, setuserData } = useContext(UserContext);
+    const dispatch = useDispatch();
 
     const handleRetrieve = (id) => {
         if (validateBusinessId(id)) {
@@ -20,7 +22,7 @@ const LicenseForm = ({ closeForm }) => {
             const userLicenseInfo = demoLicenses.find(userLicense => userLicense.user_id === userData.id_number && userLicense.license_info.business_id === id)
             if (userLicenseInfo) {
                 const license = userLicenseInfo.license_info
-                addLicense(license, userData.refreshToken, setLoading, closeForm)
+                addLicense(license, userData, setLoading, dispatch, closeForm, setuserData)
             } else {
                 alert('License not found')
                 setLoading(false)
