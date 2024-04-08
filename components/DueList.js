@@ -4,7 +4,7 @@ import { ListContainer, SectionView, MidSectionView, SectionText, SectionDate, C
 
 const { jet, white } = Colors;
 
-const DueList = ({ color, businessName, expiryDate }) => {
+const DueList = ({ color, _id, businessName, expiryDate, navigation }) => {
     
     const handleDateFormat = (fullDate) => {
         const date = new Date(fullDate)
@@ -14,8 +14,13 @@ const DueList = ({ color, businessName, expiryDate }) => {
 
         return `${day} - ${month} - ${year}`
     }
+
+    const handleLicenseSelection = (_id) => {
+        navigation.navigate('MyLicense', { _id: _id });
+    }
+
     return (
-            <ListContainer>
+            <ListContainer onPress={()=> handleLicenseSelection(_id) }>
                 <SectionView>
                     <Icon.AlertTriangle size={50} color={color ? color : white} />
                 </SectionView>
