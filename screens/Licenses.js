@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import * as Icon from 'react-native-feather'
-import { Container, InnerContainer, PageTitle, SubHeading, ListsView, Line, Colors, CardContainer, FittedContainer,
-    FloatingButton, StyledButton, ButtonText, CardView, CardTitle 
+import {
+    Container, InnerContainer, PageTitle, SubHeading, ListsView, Line, Colors, CardContainer, CardView, FittedContainer,
+    FloatingButton, ButtonText
 } from '../components/styles'
 import LicenseForm from '../components/LicenseForm';
 import DueList from '../components/DueList';
@@ -10,7 +11,7 @@ import { addLicense } from '../redux/licenseSlice';
 
 const { green, platinum, red, amber } = Colors;
 
-const Licenses = () => {
+const Licenses = ({ navigation }) => {
     const [newLicense, setNewLicense] = useState(false)
     const Licenses = useSelector(state => state.licenses)
     const dispatch = useDispatch()
@@ -25,14 +26,13 @@ const Licenses = () => {
         const today = new Date();
         const timeDiff = expiryDate - today;
         const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-        console.log(`Days diff: ${daysDiff}, Expiry Date: ${expiryDate}`)
         if (daysDiff <= 0) {
-          return red;
+            return red;
         } else if (daysDiff <= 30) {
-        return amber;
+            return amber;
         }
         return;
-      }
+    }
 
     return (
         <Container >
@@ -48,21 +48,23 @@ const Licenses = () => {
                             <LicenseForm closeForm={closeForm} />
                         </FittedContainer>
                     ) : (
-                        <StyledButton onPress={() => setNewLicense(true)} style={{ flexDirection: 'row' }}>
-                            <Icon.FilePlus size={50} color={green} />
+                        <CardView onPress={() => setNewLicense(true)} style={{ flexDirection: 'row' }}>
+                            {/* <Icon.FilePlus size={50} color={green} /> */}
                             <ButtonText>Add A License</ButtonText>
-                        </StyledButton>
+                        </CardView>
                     )}
                     <Line />
                 </CardContainer>
                 <ListsView>
                     <SubHeading color={green} >Saved Licenses</SubHeading>
                     {Licenses.length > 0 && Licenses.map((license, i) => (
-                        <DueList 
+                        <DueList
                             key={i}
-                            color={handleColorAlerts(license.expiry_date)}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
-                            businessName={license.business_name} 
-                            expiryDate={license.expiry_date} 
+                            color={handleColorAlerts(license.expiry_date)}
+                            businessName={license.business_name}
+                            _id={license._id}
+                            expiryDate={license.expiry_date}
+                            navigation={navigation}
                         />
                     ))}
                 </ListsView>
