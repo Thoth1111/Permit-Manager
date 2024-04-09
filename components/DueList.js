@@ -1,19 +1,11 @@
 import React from 'react';
 import * as Icon from 'react-native-feather';
 import { ListContainer, SectionView, MidSectionView, SectionText, SectionDate, Colors, RowedView } from './styles';
+import { formatDate } from '../helpers/dateFormatter';
 
 const { jet, white } = Colors;
 
 const DueList = ({ color, _id, businessName, expiryDate, navigation }) => {
-    
-    const handleDateFormat = (fullDate) => {
-        const date = new Date(fullDate)
-        const year = date.getFullYear();
-        const month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(date);
-        const day = new Date(fullDate).getDate();
-
-        return `${day} - ${month} - ${year}`
-    }
 
     const handleLicenseSelection = (_id) => {
         navigation.navigate('MyLicense', { _id: _id });
@@ -28,7 +20,7 @@ const DueList = ({ color, _id, businessName, expiryDate, navigation }) => {
                     <SectionText>{businessName.toUpperCase()}</SectionText>
                     <RowedView>
                         <SectionText style={{fontWeight: 'normal'}}>Expires:</SectionText>
-                        <SectionDate color={color ? color : jet}>{handleDateFormat(expiryDate)}</SectionDate>
+                        <SectionDate color={color ? color : jet}>{formatDate(expiryDate)}</SectionDate>
                     </RowedView>
                 </MidSectionView>
                 <SectionView>
