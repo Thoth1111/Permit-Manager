@@ -49,8 +49,8 @@ const Benson1 = {
         business_id: "7043",
         kra_pin: "A32345678",
         activity_code: "942",
-        effective_date: "2023-04-20",
         fee: "130000",
+        effective_date: "2023-04-20",        
         expiry_date: "2024-04-20",
         location: {
             constituency: "Westlands",
@@ -71,8 +71,8 @@ const Benson2 = {
         business_id: "8653",
         kra_pin: "A42345678",
         activity_code: "1268",
-        effective_date: "2023-03-26",
         fee: "200000",
+        effective_date: "2023-03-26",
         expiry_date: "2024-03-26",
         location: {
             constituency: "Westlands",
