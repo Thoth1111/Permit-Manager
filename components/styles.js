@@ -11,10 +11,11 @@ export const Colors = {
     platinum: "#d9d9d9ff",
     red: "#FF0000",
     green: "#013D1E",
-    yellow: "#FFCA0A"
+    yellow: "#FFCA0A",
+    lime: "#32CD32"
 };
 
-const { jet, amber, white, platinum, red, green, yellow } = Colors;
+const { jet, white, platinum, green, yellow } = Colors;
 
 // Container
 export const Container = styled.View`
@@ -28,6 +29,13 @@ export const InnerContainer = styled.View`
     width: 100%;
     align-items: center;
     background-color: ${props => props.color ? props.color : white};
+    scroll-behavior: smooth;
+`
+export const InnerScrollView = styled.ScrollView`
+    flex: 1;
+    width: 100%;
+    background-color: ${props => props.color ? props.color : white};
+    scroll-behavior: smooth;
 `
 export const AppLogo = styled.Image`
     width: 250px;
@@ -38,7 +46,7 @@ export const AppLogo = styled.Image`
 export const PageTitle = styled.Text`
     font-size: 24px;
     text-align: center;
-    font-weight: semibold;
+    font-weight: bold;
     color: ${props => props.color ? props.color : white};
     padding: 10px;
 `
@@ -197,7 +205,7 @@ export const CardView = styled.TouchableOpacity`
     height: 50px;
     width: fit-content;
     margin: 6px;
-    paddingHorizontal: 10px;
+    padding-horizontal: 10px;
     border-radius: 5px;
     shadow-color: #000;
     shadow-offset: {
@@ -252,4 +260,113 @@ export const RowedView = styled.View`
     gap: 10px;
     margin-top: 15px;
     height: fit-content;
+`
+export const DatesTable = styled.View`
+    width: 60%;
+    height: fit-content;
+    margin-vertical: 10px;
+    border-top-width: 1px;
+    border-top-color: ${jet};
+    border-right-width: 1px;
+    border-right-color: ${jet};
+    border-left-width: 1px;
+    border-left-color: ${jet};
+`
+export const DatesRow = styled.View`
+    flex-direction: row;
+    margin: 0;
+    border-bottom-width: 1px;
+    border-bottom-color: ${jet};
+`
+export const DatesCell = styled.View`
+    font-weight: bold;
+    width: ${props => props.width ? props.width : '50%'};
+    border-right-width: 1px;
+    border-right-color: ${props => props.color ? props.color : jet};
+    padding: 5px;
+    text-align: center;
+`
+export const DatesText = styled.Text`
+    font-size: 11px;
+    font-weight: bold;
+    color: ${props => props.color ? props.color : green};
+`
+export const Banner = styled.View`
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    gap: 10px;
+    justify-content: center;
+    align-items: start;
+`
+export const BannerLogo = styled.Image`
+    width: 75px;
+    height: 75px;
+    margin: 2px;
+    border-radius: 35px;
+`
+export const BannerText = styled.View`
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+`
+export const BannerTitle = styled.Text`
+    font-size: 21px;
+    font-weight: bold;
+    color: ${green};
+`
+export const BannerSubTitle = styled.Text`
+    font-size: 12px;
+    font-weight: bold;
+    color: ${green};
+`
+export const DeclarationText = styled.Text`
+    font-size: 12px;
+    font-weight: bold;
+    color: ${green};
+    margin-top: 10px;
+    align-self: flex-start;
+`
+export const SidedTable = styled.View`
+    width: 100%;
+    margin-bottom: 25px;
+`
+export const SideTableRow = styled.View`
+    flex-direction: row;
+    margin: 0.5px;
+    border: 1px solid ${jet};
+    padding: 2px;
+`
+export const SideTableCell = styled.View`
+    font-weight: bold;
+    width: '50%';
+    border-right-width: 1px;
+    border-right-color: ${props => props.color ? props.color : jet};
+    padding-right: 5px;
+    margin: 0;
+    text-align: center;
+`
+export const SideTableText = styled.Text`
+    font-size: 12px;
+    font-weight: bold;
+    color: ${green};
+    padding: 5px;
+`
+export const StatusText = styled.Text`
+    font-size: 24px;
+    font-weight: bold;
+    color: ${props => props.color ? props.color : platinum};
+    padding: 10px;
+`
+export const LicenseStateContainer = styled.View`
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+    justify-content: space-between;
+    align-items: start;
+`
+export const StampBox = styled.View`
+    width: 100%;
+    height: fit-content;
+    border: 1px solid ${jet};
 `
