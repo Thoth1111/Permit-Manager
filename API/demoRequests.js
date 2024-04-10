@@ -5,7 +5,7 @@ const Stacy1 = {
         business_id: "4143",
         kra_pin: "A12345678",
         activity_code: "895",
-        fee: "21500",
+        fee: "24000",
         effective_date: "2023-04-26",
         expiry_date: "2024-04-26",
         location: {
@@ -27,7 +27,7 @@ const Stacy2 = {
         business_id: "4302",
         kra_pin: "A22345678",
         activity_code: "894",
-        fee: "58000",
+        fee: "50000",
         effective_date: "2022-12-22",
         expiry_date: "2023-12-22",
         location: {
@@ -49,7 +49,7 @@ const Benson1 = {
         business_id: "7043",
         kra_pin: "A32345678",
         activity_code: "942",
-        fee: "130000",
+        fee: "30000",
         effective_date: "2023-04-20",        
         expiry_date: "2024-04-20",
         location: {
@@ -71,7 +71,7 @@ const Benson2 = {
         business_id: "8653",
         kra_pin: "A42345678",
         activity_code: "1268",
-        fee: "200000",
+        fee: "100000",
         effective_date: "2023-03-26",
         expiry_date: "2024-03-26",
         location: {
