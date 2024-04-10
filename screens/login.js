@@ -78,7 +78,7 @@ const Login = ({ navigation }) => {
                                     hidePassword={hidePassword}
                                     setHidePassword={setHidePassword}
                                 />
-                                <MsgBox>...</MsgBox>
+                                {/* <MsgBox>...</MsgBox> */}
                                 {loading ? (
                                     <StyledButton disabled={true}>
                                         <ActivityIndicator size="large" color={green} />
