@@ -107,7 +107,6 @@ const SignUp = ({ navigation }) => {
                                     value={values.confirm_password}
                                     secureTextEntry={true}
                                 />
-                                {/* <MsgBox>...</MsgBox> */}
                                 {loading ? (
                                     <StyledButton disabled={true}>
                                         <ActivityIndicator size="large" color={green} />
