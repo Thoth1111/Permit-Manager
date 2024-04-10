@@ -62,8 +62,7 @@ const MyLicense = ({ route }) => {
                 <SidedTable>
                     <SideTableRow>
                         <SideTableText>
-                            Having Paid a Business Permit Fee of KES
-                            {license.fee.toLocaleString()}
+                            Having Paid a Business Permit Fee of KES {license.fee.toLocaleString()}
                         </SideTableText>
                     </SideTableRow>
                     <SideTableRow>
