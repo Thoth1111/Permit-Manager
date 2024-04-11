@@ -2,7 +2,6 @@ import React, { useEffect, useCallback, useContext, useState } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { StatusBar } from 'expo-status-bar'
-import * as Icon from 'react-native-feather';
 import {
   Container, InnerContainer, CardContainer, CardView, CardTitle, Colors, Line, PageTitle, SubHeading,
   ListsView, IconView
