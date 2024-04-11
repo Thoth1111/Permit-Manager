@@ -14,6 +14,7 @@ import Home from '../screens/Home';
 import Licenses from '../screens/Licenses';
 import MyLicense from '../screens/MyLicense';
 import Payments from '../screens/Payments';
+import PayAction from '../screens/PayAction';
 import Account from '../screens/Account';
 
 import { Colors } from '../components/styles';
@@ -43,6 +44,7 @@ const RootStack = () => {
                                 <Stack.Screen name="Licenses" component={Licenses} />
                                 <Stack.Screen name="MyLicense" component={MyLicense} />
                                 <Stack.Screen name="Payments" component={Payments} />
+                                <Stack.Screen name="PayAction" component={PayAction} />
                                 <Stack.Screen name="Account" component={Account} />
                             </>
                         ) : (
