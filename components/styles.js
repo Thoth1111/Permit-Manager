@@ -370,3 +370,38 @@ export const StampBox = styled.View`
     height: fit-content;
     border: 1px solid ${jet};
 `
+export const PayOptionRow = styled.View`
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+`
+export const PayOptionView = styled.View`
+    flex-direction: row;
+    width: 50%;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    border: 2px solid ${platinum};
+    padding: 5px;
+    margin: 2px;
+`
+export const PayOptionText = styled.Text`
+    font-size: 15px;
+    font-weight: bold;
+    color: ${jet};
+`
+export const PayOptionIcon = styled.Image`
+    width: 100px;
+    height: 80px;
+    border-radius: 25px;   
+`
+export const LabelText = styled.Text`
+    align-self: flex-start;
+    font-size: 14px;
+    font-weight: bold;
+    color: ${jet};
+    margin-top: 30px;
+    margin-bottom: 10px;
+`
