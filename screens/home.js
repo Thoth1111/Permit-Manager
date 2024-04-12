@@ -43,7 +43,6 @@ const Home = ({ navigation }) => {
     <Container isWhite={true}>
       <StatusBar style="dark" />
       <InnerContainer isWhite={true}>
-        <PageTitle color={green}>Welcome</PageTitle>
         <CardContainer>
           <Line />
           <CardView onPress={() => navigation.navigate('Licenses')}>
