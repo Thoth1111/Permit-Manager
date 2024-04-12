@@ -3,8 +3,8 @@ import { ActivityIndicator } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { StatusBar } from 'expo-status-bar'
 import {
-  Container, InnerContainer, CardContainer, CardView, CardTitle, Colors, Line, PageTitle, SubHeading,
-  ListsView, IconView
+  Container, InnerContainer, CardContainer, CardView, CardTitle, Colors, Line, SubHeading,
+  ListsView
 } from '../components/styles'
 import { UserContext } from '../components/UserContext';
 import { getAllLicenses } from '../API/licenseRequests';
