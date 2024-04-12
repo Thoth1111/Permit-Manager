@@ -29,7 +29,6 @@ export const InnerContainer = styled.View`
     width: 100%;
     align-items: center;
     background-color: ${props => props.color ? props.color : white};
-    scroll-behavior: smooth;
 `
 export const InnerScrollView = styled.ScrollView`
     flex: 1;
@@ -63,8 +62,7 @@ export const FormArea = styled.View`
 export const AuthTextInput = styled.TextInput`
     background-color: ${white};
     padding: 15px;
-    padding-left: 55px;
-    padding-right: 55px;
+    padding-horizontal: 55px;
     border-radius: 5px;
     font-size: 16px;
     height: 60px;
@@ -155,7 +153,6 @@ export const FittedContainer = styled.View`
     width: 100%;
     height: fit-content;
     justify-content: center;
-    align-text: center;
 `
 export const ListContainer = styled.TouchableOpacity`
     flex-direction: row;
@@ -236,15 +233,25 @@ export const ListsView = styled.View`
 `
 export const StyledTextInput = styled.TextInput`
     background-color: ${white};
-    padding: 10px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-vertical: 10px;
+    padding-horizontal: 5px;
     border: 1px solid ${jet};
     border-radius: 5px;
     font-size: 16px;
     height: 60px;
     margin-vertical: 3px;
     margin-bottom: 10px;
+    color: ${jet};
+`
+export const PayTextInput = styled.TextInput`
+    background-color: ${white};
+    width: 60%;
+    padding: 8px;
+    border: 1px solid ${jet};
+    border-radius: 5px;
+    font-size: 16px;
+    height: 50px;
+    margin-bottom: 30px;
     color: ${jet};
 `
 export const StyledInputLabel = styled.Text`
@@ -370,27 +377,57 @@ export const StampBox = styled.View`
     height: fit-content;
     border: 1px solid ${jet};
 `
+export const PayWindow = styled.View`
+    margin-top: 40px;
+    width: 100%;
+    height: fit-content;
+    justify-content: start;
+    align-items: center;
+`
 export const PayOptionRow = styled.View`
     flex-direction: row;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 `
-export const PayOptionView = styled.View`
+export const PayOptionView = styled.TouchableOpacity`
     flex-direction: row;
-    width: 50%;
-    height: 100px;
-    justify-content: space-between;
+    width: 40%;
+    height: 80px;
+    justify-content: space-around;
     align-items: center;
+    border: 2px solid ${props => props.color ? props.color : platinum};
     border-radius: 8px;
-    border: 2px solid ${platinum};
     padding: 5px;
     margin: 2px;
+`
+export const AmountRow = styled.View`
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+`
+export const AmountView = styled.TouchableOpacity`
+    flex-direction: row;
+    width: 40%;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid ${jet};
+    border-radius: 8px;
+    padding: 5px;
+    margin-horizontal: 10px;
+`
+export const AmountText = styled.Text`
+    font-size: 24px;
+    font-weight: bold;
+    color: ${green};
 `
 export const PayOptionText = styled.Text`
     font-size: 15px;
     font-weight: bold;
     color: ${jet};
+    margin-bottom: 10px;
 `
 export const PayOptionIcon = styled.Image`
     width: 100px;
