@@ -8,7 +8,6 @@ const Payments = ({ navigation }) => {
     return (
         <Container >
             <InnerContainer>
-                <PageTitle color={green}>Payments & Receipts</PageTitle>
                 <CardContainer>
                     <Line />
                     <CardView onPress={() => navigation.navigate('PayAction')} style={{ flexDirection: 'row' }}>
