@@ -37,7 +37,6 @@ const Licenses = ({ navigation }) => {
     return (
         <Container >
             <InnerContainer>
-                <PageTitle color={green}>Your Licenses</PageTitle>
                 <CardContainer>
                     <Line />
                     {newLicense ? (
