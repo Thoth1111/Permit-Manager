@@ -4,14 +4,13 @@ import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Formik } from 'formik';
 
-import TextIconInput from '../components/TextIconInput.js';
-
 import {
     Container, InnerContainer, PageTitle, SubHeading, FormArea, StyledButton, ButtonText, Colors, MsgBox,
     Line, ExtraView, ExtraText, TextLink, TextLinkContent
 } from '../components/styles.js';
 import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper.js';
 import { UserContext } from '../components/UserContext.js';
+import TextIconInput from '../components/TextIconInput.js';
 
 import { loginUser } from '../API/userRequests.js';
 
