@@ -61,7 +61,7 @@ export const FormArea = styled.View`
 `
 export const AuthTextInput = styled.TextInput`
     background-color: ${white};
-    padding: 15px;
+    padding-vertical: 15px;
     padding-horizontal: 55px;
     border-radius: 5px;
     font-size: 16px;
@@ -158,7 +158,7 @@ export const ListContainer = styled.TouchableOpacity`
     flex-direction: row;
     background-color: ${white};
     width: 98%;
-    height: 15%;
+    height: 100px;
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
