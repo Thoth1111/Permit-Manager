@@ -31,16 +31,6 @@ const ValidityTable = ({ effectiveDate, expiryDate}) => {
                     <DatesText>{end_date}</DatesText>
                 </DatesCell>
             </DatesRow>
-            <DatesRow>
-                <DatesCell>
-                    <DatesText>Duration</DatesText>
-                </DatesCell>
-                <DatesCell
-                    color={white}
-                >
-                    <DatesText>{duration} Months</DatesText>
-                </DatesCell>
-            </DatesRow>
         </DatesTable>
     )
 }
