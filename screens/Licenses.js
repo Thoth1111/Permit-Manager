@@ -2,14 +2,15 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import * as Icon from 'react-native-feather'
 import {
-    Container, InnerContainer, PageTitle, SubHeading, ListsView, Line, Colors, CardContainer, CardView, FittedContainer,
+    Container, InnerContainer, SubHeading, ListsView, Line, Colors, CardContainer, CardView, FittedContainer,
     FloatingButton, ButtonText, InnerScrollView
 } from '../components/styles'
 import LicenseForm from '../components/LicenseForm';
 import DueList from '../components/DueList';
 import { addLicense } from '../redux/licenseSlice';
+import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper.js';
 
-const { green, platinum, red, amber } = Colors;
+const { green, red, amber } = Colors;
 
 const Licenses = ({ navigation }) => {
     const [newLicense, setNewLicense] = useState(false)
@@ -48,7 +49,6 @@ const Licenses = ({ navigation }) => {
                         </FittedContainer>
                     ) : (
                         <CardView onPress={() => setNewLicense(true)} style={{ flexDirection: 'row' }}>
-                            {/* <Icon.FilePlus size={50} color={green} /> */}
                             <ButtonText>Add A License</ButtonText>
                         </CardView>
                     )}
