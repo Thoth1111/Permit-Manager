@@ -1,21 +1,19 @@
 import axios from 'axios';
 import { logoutUser } from './userRequests';
-
+import { getAllLicenses } from './licenseRequests';
 // Make a Safaricom Payment
-const initiatePayment = async (newPayment, userData, setLoading, dispatch, setUserData) => {
-    const reqBody = {
-        license_id: newPayment.license_id,
-        phone_number: newPayment.phone_number,
-        extension_plan: newPayment.extension_plan,
-    }
-    await axios.post('https://clm-server.onrender.com/payment/saf/pay', reqBody,
+const initiatePayment = async (newPayment, userData, setLoading, dispatch, setUserData, redirectToHome) => {
+    await axios.post('https://clm-server.onrender.com/payment/saf/pay', newPayment,
     {
         headers: {
             Authorization: userData.refreshToken
         }
     })
     .then((res) => {
-        console.log('Payment initiated')
+        console.log(res.data)
+        getAllLicenses(userData, setLoading, dispatch, setUserData)
+        alert('Payment successful')
+        redirectToHome()
     })
     .catch((err) => {
         if(err.response.status === 401 || err.response.status === 403) {
