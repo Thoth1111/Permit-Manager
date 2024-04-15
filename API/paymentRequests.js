@@ -10,7 +10,6 @@ const initiatePayment = async (newPayment, userData, setLoading, dispatch, setUs
         }
     })
     .then((res) => {
-        console.log(res.data)
         getAllLicenses(userData, setLoading, dispatch, setUserData)
         alert('Payment successful')
         redirectToHome()
