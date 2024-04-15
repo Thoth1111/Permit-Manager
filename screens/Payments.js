@@ -1,6 +1,6 @@
 import React from 'react'
 // Styled Components
-import { Container, InnerContainer, PageTitle, CardContainer, Line, CardView, ButtonText, ListsView, SubHeading, Colors } from '../components/styles'
+import { Container, InnerContainer, CardContainer, Line, CardView, ButtonText, ListsView, SubHeading, Colors } from '../components/styles'
 
 const { green } = Colors
 
