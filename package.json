@@ -21,7 +21,6 @@
     "expo-status-bar": "~1.11.1",
     "formik": "^2.4.5",
     "num-words": "^1.2.3",
-    "qrcode": "^1.5.3",
     "react": "18.2.0",
     "react-native": "0.73.6",
     "react-native-dropdown-select-list": "^2.0.5",
@@ -31,7 +30,6 @@
     "react-native-screens": "~3.29.0",
     "react-redux": "^9.1.0",
     "styled-components": "^6.1.8",
-    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
