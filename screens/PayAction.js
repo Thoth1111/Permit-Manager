@@ -11,7 +11,7 @@ import { initiatePayment } from '../API/paymentRequests.js';
 
 const { green, platinum, jet } = Colors;
 
-const PayAction = () => {
+const PayAction = ({ navigation }) => {
     const dispatch = useDispatch();
     const Licenses = useSelector(state => state.licenses);
     const { userData, setUserData } = useContext(UserContext);
@@ -28,16 +28,22 @@ const PayAction = () => {
 
     const [newPayment, setNewPayment] = useState({
         license_id: '',
+        business_name: '',
         extension_plan: '1 year',
         phone_number: '',
         amount: ''
     });
+
+    const redirectToHome = () => {
+        navigation.navigate('Home');
+    }
 
     const handleLicenseSelection = (selected) => {
         const license = Licenses.find(license => license.business_name === selected);
         setNewPayment({
             ...newPayment,
             license_id: license._id,
+            business_name: selected
         });
         setApplicableFee(license.fee);
     };
@@ -56,7 +62,7 @@ const PayAction = () => {
         }
         else if(validatePhoneNumber(newPayment.phone_number)){
             setLoading(true);
-            initiatePayment(newPayment, userData, setLoading, dispatch, setUserData);
+            initiatePayment(newPayment, userData, setLoading, dispatch, setUserData, redirectToHome);
         }
         return;
     }
