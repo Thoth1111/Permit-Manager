@@ -373,6 +373,8 @@ export const LicenseStateContainer = styled.View`
     align-items: start;
 `
 export const StampBox = styled.View`
+    flex-direction: row;
+    justify-content: space-around;
     width: 100%;
     height: fit-content;
     border: 1px solid ${jet};
