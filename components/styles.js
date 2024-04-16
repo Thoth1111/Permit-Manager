@@ -442,3 +442,8 @@ export const LabelText = styled.Text`
     margin-top: 30px;
     margin-bottom: 10px;
 `
+export const QRCodeView = styled.Image`
+    width: 200px;
+    height: 200px;
+    margin-top: 30px;
+`
