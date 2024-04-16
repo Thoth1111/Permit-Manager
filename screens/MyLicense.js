@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Container, InnerScrollView, Colors, DeclarationText, SidedTable, SideTableRow, SideTableText, SideTableCell, LicenseStateContainer, StatusText, StampBox } from '../components/styles';
+import { Container, InnerScrollView, Colors, DeclarationText, SidedTable, SideTableRow, SideTableText, SideTableCell, LicenseStateContainer, StatusText, StampBox, QRCodeView } from '../components/styles';
 import ValidityTable from '../components/ValidityTable';
 import LicenseBanner from '../components/LicenseBanner';
 import DetailsTable from '../components/DetailsTable';
@@ -118,6 +118,7 @@ const MyLicense = ({ route }) => {
                     <SideTableText>
                         By order of
                     </SideTableText>
+                    <QRCodeView source={{uri: `https://clm-server.onrender.com/public/qrCodes/${license.business_name}.png}`}} />
                 </StampBox>
             </InnerScrollView>
         </Container>
