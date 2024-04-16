@@ -55,8 +55,8 @@ const addLicense = async (values, userData, setLoading, dispatch, closeForm, set
         }
     })
     .then((res) => {
-        console.log(res.data)
         alert('License saved')
+        console.log(res.status)
         closeForm(res.data.newLicense)
     })
     .catch((err) => {
