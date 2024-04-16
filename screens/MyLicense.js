@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Container, InnerScrollView, Colors, DeclarationText, SidedTable, SideTableRow, SideTableText, SideTableCell, LicenseStateContainer, StatusText, StampBox, QRCodeView } from '../components/styles';
+import { Container, InnerScrollView, Colors, DeclarationText, SidedTable, SideTableRow, SideTableText, SideTableCell, LicenseStateContainer, StatusText, StampBox } from '../components/styles';
 import ValidityTable from '../components/ValidityTable';
 import LicenseBanner from '../components/LicenseBanner';
 import DetailsTable from '../components/DetailsTable';
 import { formatDate } from '../helpers/dateFormatter';
+import QrCodeImage from '../components/QrCodeImage';
 
 const numWords = require('num-words');
 const { lime, white, red } = Colors;
@@ -118,7 +119,9 @@ const MyLicense = ({ route }) => {
                     <SideTableText>
                         By order of
                     </SideTableText>
-                    <QRCodeView source={{uri: `https://clm-server.onrender.com/public/qrCodes/${license.business_name}.png}`}} />
+                    <QrCodeImage
+                        qrCodeBuffer={license.qr_code_buffer}
+                    />
                 </StampBox>
             </InnerScrollView>
         </Container>
