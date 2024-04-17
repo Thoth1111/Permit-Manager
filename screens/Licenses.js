@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import * as Icon from 'react-native-feather'
 import {
     Container, InnerContainer, SubHeading, ListsView, Line, Colors, CardContainer, CardView, FittedContainer,
-    FloatingButton, ButtonText, InnerScrollView
+    FloatingButton, ButtonText
 } from '../components/styles'
 import LicenseForm from '../components/LicenseForm';
 import DueList from '../components/DueList';
 import { addLicense } from '../redux/licenseSlice';
-import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper.js';
+import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper';
 
 const { green, red, amber } = Colors;
 
@@ -36,39 +36,41 @@ const Licenses = ({ navigation }) => {
     }
 
     return (
-        <Container >
-            <InnerContainer>
-                <CardContainer>
-                    <Line />
-                    {newLicense ? (
-                        <FittedContainer>
-                            <FloatingButton onPress={() => setNewLicense(false)} >
-                                <Icon.X size={30} color={green} />
-                            </FloatingButton>
-                            <LicenseForm closeForm={closeForm} />
-                        </FittedContainer>
-                    ) : (
-                        <CardView onPress={() => setNewLicense(true)} style={{ flexDirection: 'row' }}>
-                            <ButtonText>Add A License</ButtonText>
-                        </CardView>
-                    )}
-                    <Line />
-                </CardContainer>
-                <ListsView>
-                    <SubHeading color={green} >Saved Licenses</SubHeading>
-                    {Licenses.length > 0 && Licenses.map((license, i) => (
-                        <DueList
-                            key={i}
-                            color={handleColorAlerts(license.expiry_date)}
-                            businessName={license.business_name}
-                            _id={license._id}
-                            expiryDate={license.expiry_date}
-                            navigation={navigation}
-                        />
-                    ))}
-                </ListsView>
-            </InnerContainer>
-        </Container >
+        <KeyboardAverseWrapper>
+            <Container >
+                <InnerContainer>
+                    <CardContainer>
+                        <Line />
+                        {newLicense ? (
+                            <FittedContainer>
+                                <FloatingButton onPress={() => setNewLicense(false)} >
+                                    <Icon.X size={30} color={green} />
+                                </FloatingButton>
+                                <LicenseForm closeForm={closeForm} />
+                            </FittedContainer>
+                        ) : (
+                            <CardView onPress={() => setNewLicense(true)} style={{ flexDirection: 'row' }}>
+                                <ButtonText>Add A License</ButtonText>
+                            </CardView>
+                        )}
+                        <Line />
+                    </CardContainer>
+                    <ListsView>
+                        <SubHeading color={green} >Saved Licenses</SubHeading>
+                        {Licenses.length > 0 && Licenses.map((license, i) => (
+                            <DueList
+                                key={i}
+                                color={handleColorAlerts(license.expiry_date)}
+                                businessName={license.business_name}
+                                _id={license._id}
+                                expiryDate={license.expiry_date}
+                                navigation={navigation}
+                            />
+                        ))}
+                    </ListsView>
+                </InnerContainer>
+            </Container >
+        </KeyboardAverseWrapper>
     )
 }
 
