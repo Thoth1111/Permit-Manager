@@ -158,7 +158,7 @@ export const ListContainer = styled.TouchableOpacity`
     flex-direction: row;
     background-color: ${white};
     width: 98%;
-    height: 100px;
+    height: 90px;
     justify-content: space-between;
     align-items: center;
     border-radius: 5px;
@@ -166,13 +166,13 @@ export const ListContainer = styled.TouchableOpacity`
     margin: 2px;
 `
 export const SectionView = styled.View`
-    width: 25%;
+    width: 15%;
     height: 100%;
     justify-content: center;
     align-items: center;
 `
 export const MidSectionView = styled.View`
-    width: 50%;
+    width: 70%;
     height: fit-content;
     justify-content: center;
     align-items: flex-start;
