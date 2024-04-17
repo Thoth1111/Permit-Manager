@@ -8,7 +8,6 @@ import {
 import LicenseForm from '../components/LicenseForm';
 import DueList from '../components/DueList';
 import { addLicense } from '../redux/licenseSlice';
-import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper';
 
 const { green, red, amber } = Colors;
 
@@ -36,7 +35,6 @@ const Licenses = ({ navigation }) => {
     }
 
     return (
-        <KeyboardAverseWrapper>
             <Container >
                 <InnerContainer>
                     <CardContainer>
@@ -70,7 +68,6 @@ const Licenses = ({ navigation }) => {
                     </ListsView>
                 </InnerContainer>
             </Container >
-        </KeyboardAverseWrapper>
     )
 }
 
