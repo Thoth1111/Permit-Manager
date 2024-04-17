@@ -19,9 +19,6 @@ const getAllLicenses = async (userData, setLoading, dispatch, setUserData) => {
         }
         console.log(err)
     })
-    .finally(() => {
-        setLoading(false)
-    })
 }
 
 // Get a single license
