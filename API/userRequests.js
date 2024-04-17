@@ -1,6 +1,7 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { clearLicenses } from  '../redux/licenseSlice';
+import { clearPayments } from '../redux/paymentSlice';
 
 // Register a user
 const createAccount = async (values, setLoading, sessionPersist) => {
@@ -34,6 +35,7 @@ clearUserData = async (dispatch, setUserData) => {
     await AsyncStorage.removeItem('userSessionData')
         .then(() => {
             dispatch(clearLicenses())
+            dispatch(clearPayments())
             setUserData(null)
         })
         .catch((err) => {
