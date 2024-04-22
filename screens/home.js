@@ -10,7 +10,6 @@ import { UserContext } from '../components/UserContext';
 import { getAllLicenses } from '../API/licenseRequests';
 import { filteredLicenses } from '../redux/selectors';
 import DueList from '../components/DueList';
-import { getPayments } from '../API/paymentRequests'
 
 const { green, red, amber } = Colors
 
@@ -20,10 +19,9 @@ const Home = ({ navigation }) => {
   const dispatch = useDispatch();
   const dueLicenses = useSelector(filteredLicenses);
 
-  const fetchUserLicenseData = useCallback(() => {
+  const fetchUserLicenses = useCallback(() => {
     setLoading(true);
     getAllLicenses(userData, setLoading, dispatch, setUserData)
-    getPayments(userData, setLoading, dispatch, setUserData)
   }, [userData, dispatch]);
 
   const handleColorAlerts = (expiry_date) => {
@@ -38,8 +36,8 @@ const Home = ({ navigation }) => {
   }
 
   useEffect(() => {
-    fetchUserLicenseData();
-  }, [fetchUserLicenseData]);
+    fetchUserLicenses();
+  }, [fetchUserLicenses]);
 
   return (
     <Container isWhite={true}>
