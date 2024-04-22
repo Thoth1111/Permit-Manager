@@ -7,7 +7,6 @@ const { jet, white } = Colors;
 const ValidityTable = ({ effectiveDate, expiryDate}) => {
     const init_date = formatDate(effectiveDate)
     const end_date =  formatDate(expiryDate)
-    const duration = Math.floor((new Date(expiryDate) - new Date(effectiveDate)) / (1000 * 60 * 60 * 24 * 30))
 
     return (
         <DatesTable>
