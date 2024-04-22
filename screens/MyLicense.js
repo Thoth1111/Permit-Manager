@@ -51,7 +51,7 @@ const MyLicense = ({ route }) => {
                     N**** City County grant this Business Permit to
                 </DeclarationText>
                 <DetailsTable
-                    textBox1={`Applcant/Business/Commercial Name \n${license.business_name.toUpperCase()}`}
+                    textBox1={`Applicant/Business/Commercial Name \n${license.business_name.toUpperCase()}`}
                     textBox2={`KRA Pin   ${license.kra_pin}`}
                     textBox3={`Business ID    ${license.business_id}`}
                 />
