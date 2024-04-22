@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListContainer, SectionView, MidSectionView, SectionText, SectionDate } from './styles';
+import { PayContainer, PayDate, PayBusiness, SectionText } from './styles';
 import { formatDate } from '../helpers/dateFormatter';
 
 const PayView = ({ _id, businessName, transactionDate, amount, navigation }) => {
@@ -9,17 +9,14 @@ const PayView = ({ _id, businessName, transactionDate, amount, navigation }) => 
     }
 
     return (
-            <ListContainer onPress={()=> handlePaymentSelection(_id) }>
-                <SectionView>
+            <PayContainer onPress={()=> handlePaymentSelection(_id) }>
+                <PayDate>
                     <SectionText>{formatDate(transactionDate)}</SectionText>
-                </SectionView>
-                <SectionView>
+                </PayDate>
+                <PayBusiness>
                     <SectionText>{businessName.toUpperCase()}</SectionText>
-                </SectionView>
-                <SectionView>
-                    <SectionText>Kshs {amount}</SectionText>
-                </SectionView>
-            </ListContainer>
+                </PayBusiness>
+            </PayContainer>
     )
 }
 
