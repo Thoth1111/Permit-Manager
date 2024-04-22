@@ -5,10 +5,10 @@ const statusBarHeight = Constants.statusBarHeight;
 
 // Colors
 export const Colors = {
-    jet: "#353535ff",
+    jet: "#353535",
     amber: "#FFA07A",
-    white: "#ffffffff",
-    platinum: "#d9d9d9ff",
+    white: "#ffffff",
+    platinum: "#d9d9d9",
     red: "#FF0000",
     green: "#013D1E",
     yellow: "#FFCA0A",
@@ -165,9 +165,34 @@ export const ListContainer = styled.TouchableOpacity`
     padding: 0px;
     margin: 2px;
 `
+export const PayContainer = styled.TouchableOpacity`
+    flex-direction: row;
+    background-color: ${white};
+    width: 98%;
+    height: 60px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    padding: 0px;
+    border-bottom-width: 1px;
+    border-bottom-color: ${platinum};
+`
 export const SectionView = styled.View`
     width: 15%;
     height: 100%;
+    justify-content: center;
+    align-items: center;
+`
+export const PayDate = styled.View`
+    width: 25%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+`
+export const PayBusiness = styled.View`
+    width: 75%;
+    height: fit-content;
     justify-content: center;
     align-items: center;
 `
@@ -177,10 +202,19 @@ export const MidSectionView = styled.View`
     justify-content: center;
     align-items: flex-start;
 `
+export const SectionLabel = styled.Text`
+    font-size: 14px;
+    font-weight: bold;
+    color: ${jet};    
+`
 export const SectionText = styled.Text`
     font-size: 14px;
     font-weight: bold;
     color: ${jet};    
+`
+export const SectionValue = styled.Text`
+    font-size: 14px;
+    color: ${green};    
 `
 export const SectionDate = styled.Text`
     font-size: 14px;
@@ -392,6 +426,13 @@ export const PayOptionRow = styled.View`
     justify-content: space-around;
     align-items: center;
 `
+export const ReceiptRow = styled.View`
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+`
 export const PayOptionView = styled.TouchableOpacity`
     flex-direction: row;
     width: 40%;
@@ -435,6 +476,13 @@ export const PayOptionIcon = styled.Image`
     width: 100px;
     height: 80px;
     border-radius: 25px;   
+`
+export const ReceiptIcon = styled.Image`
+    width: 100px;
+    height: 80px;
+    align-self: center;
+    margin-top: 20px;
+    margin-bottom: 40px;   
 `
 export const LabelText = styled.Text`
     align-self: flex-start;
