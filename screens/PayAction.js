@@ -7,7 +7,7 @@ import KeyboardAverseWrapper from '../components/KeyboardAverseWrapper.js';
 import { Container, InnerContainer, Colors, PayWindow, PayOptionRow, PayOptionView, PayOptionIcon, LabelText, AmountView, AmountText, AmountRow, PayTextInput, StyledButton, ButtonText, PageTitle } from '../components/styles';
 import { validatePhoneNumber } from '../helpers/validations.js';
 import { UserContext } from '../components/UserContext.js';
-import { initiatePayment } from '../API/paymentRequests.js';
+import { initiatePayment, makeBypassPayment } from '../API/paymentRequests.js';
 
 const { green, platinum, jet } = Colors;
 
@@ -62,7 +62,7 @@ const PayAction = ({ navigation }) => {
         }
         else if(validatePhoneNumber(newPayment.phone_number)){
             setLoading(true);
-            initiatePayment(newPayment, userData, setLoading, dispatch, setUserData, redirectToHome);
+            makeBypassPayment(newPayment, userData, setLoading, dispatch, setUserData, redirectToHome);
         }
         return;
     }
