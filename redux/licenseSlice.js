@@ -12,18 +12,11 @@ const licenseSlice = createSlice({
         addLicense: (state, action) => {
             state.push(action.payload)
         },
-        // updateLicense: (state, action) => {
-        //     const { _id } = action.payload
-        //     const licenseIndex = state.findIndex(license => license._id === _id)
-        //     if (licenseIndex !== -1) {
-        //         state[licenseIndex] = action.payload
-        //     }
-        // },
         // deleteLicense: (state, action) => {
         //     return state.filter(license => license._id !== action.payload)
         // },
         clearLicenses: (state) => {
-            return []
+            return [];
         }
     },
 });
