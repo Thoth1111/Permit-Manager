@@ -62,7 +62,7 @@ const PayAction = ({ navigation }) => {
         }
         else if(validatePhoneNumber(newPayment.phone_number)){
             setLoading(true);
-            makeBypassPayment(newPayment, userData, setLoading, dispatch, setUserData, redirectToHome);
+            initiatePayment(newPayment, userData, setLoading, dispatch, setUserData, redirectToHome);
         }
         return;
     }
