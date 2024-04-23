@@ -1,12 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Container, InnerContainer, ReceiptRow, SectionLabel, SectionValue, ReceiptIcon, FittedContainer } from '../components/styles';
-import { formatDate } from '../helpers/dateFormatter';
 
 const MyPayment = ({ route }) => {
     const { _id } = route.params;
     const payment = useSelector(state => state.payments.find(payment => payment._id === _id));
-    console.log(payment);
     const paidAmount = payment.amount.toLocaleString();
     const transactionDate = new Date(payment.transaction_date);
     const formattedDate = new Date(payment.transaction_date).toLocaleDateString('en-GB',
