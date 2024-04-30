@@ -497,3 +497,17 @@ export const QRCodeView = styled.Image`
     height: 200px;
     margin-top: 30px;
 `
+export const FloatDownloader = styled.TouchableOpacity`
+    background-color: ${yellow};
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    elevation: 5;
+    z-index: 10;
+    border: 1px solid ${green};
+`
