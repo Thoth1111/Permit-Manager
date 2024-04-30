@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Container, InnerScrollView, Colors, DeclarationText, SidedTable, SideTableRow, SideTableText, SideTableCell, LicenseStateContainer, StatusText, StampBox } from '../components/styles';
+import * as Icon from 'react-native-feather';
+import { Container, InnerScrollView, Colors, DeclarationText, SidedTable, SideTableRow, SideTableText, SideTableCell, LicenseStateContainer, StatusText, StampBox, FloatDownloader } from '../components/styles';
+import { getLicensePDF } from '../helpers/pdfGenerator';
 import ValidityTable from '../components/ValidityTable';
 import LicenseBanner from '../components/LicenseBanner';
 import DetailsTable from '../components/DetailsTable';
@@ -8,13 +10,25 @@ import { formatDate } from '../helpers/dateFormatter';
 import QrCodeImage from '../components/QrCodeImage';
 
 const numWords = require('num-words');
-const { lime, white, red } = Colors;
+const { lime, white, red, green } = Colors;
 
 const MyLicense = ({ route }) => {
     const { _id } = route.params;
     const [expired, setExpired] = useState(false);
     const licenses = useSelector(state => state.licenses);
     const license = licenses.find(license => license._id === _id)
+    
+    const licenseDetails = {
+        business_name: license.business_name,
+        kra_pin: license.kra_pin,
+        business_id: license.business_id,
+        activity_code: license.activity_code,
+        fee: license.fee,
+        location: license.location,
+        effective_date: license.effective_date,
+        expiry_date: license.expiry_date,
+        qr_code_buffer: license.qr_code_buffer
+    }
 
     const checkValidity = (expiry_date) => {
         const expiryDate = new Date(expiry_date);
@@ -34,8 +48,12 @@ const MyLicense = ({ route }) => {
 
     return (
         <Container >
+            <FloatDownloader onPress={()=> getLicensePDF(licenseDetails)}>
+                <Icon.Download size={25} color={green} />
+            </FloatDownloader>
             <InnerScrollView
                 showsVerticalScrollIndicator={false}
+                bounces={false}
             >
                 <LicenseBanner />
                 <LicenseStateContainer>
