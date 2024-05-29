@@ -95,7 +95,7 @@ npm install
 Run the following command:
 
 ```
-npn expo start
+npm expo start
 
 ```
 If using an emulator, such as Android Studio, connect & run the virtual device. Press `a` to run the application in the virtual device.
