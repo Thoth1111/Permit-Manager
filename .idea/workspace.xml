@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb047f35-fb73-4e9e-9097-a376f809f9f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/Account.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Account.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/styles.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/styles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,14 +47,16 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;AnalyzeApkAction.lastApkPath&quot;: &quot;C:/Users/sharks/Desktop/Thoth-Code-Ke/County_License_Manager&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;ScreenRecorder.SavePath&quot;: &quot;C:\\Users\\sharks\\Downloads&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;com.android.tools.idea.streaming.zoom.toolbar.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;frontend&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/sharks/Desktop/Thoth-Code-Ke/County_License_Manager&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;payments&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sharks/Downloads&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
   }
 }</component>
@@ -70,5 +70,16 @@
       <updated>1710852981321</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
