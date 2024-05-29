@@ -3,7 +3,7 @@
 # 📗 Table of Contents
 
 - [📗 Table of Contents](#-table-of-contents)
-- [LukApp](#about-project)
+- [Permit Manager](#about-project)
   - [🚀 Live Demo](#live-demo)
   - [📄\[Project Documentation\] ](#project-documentation)
   - [🛠 Built With ](#built-with)
@@ -72,7 +72,7 @@ https://github.com/Thoth1111/Permit-Manager
 Open the code editor and clone the repo. Alternatively, run the following command in the directory you wish to clone the application to.
 
 ```
-$ git clone https://Thoth1111/Fullstack-Capstone-Project.git
+$ git clone https://github.com/Thoth1111/Permit-Manager.git
 
 ```
 ### Install
